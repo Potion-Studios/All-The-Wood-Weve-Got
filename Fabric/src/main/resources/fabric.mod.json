@@ -21,6 +21,9 @@
     ],
     "client": [
       "net.potionstudios.woodwevegot.fabric.client.WoodWeveGotClientFabric"
+    ],
+    "fabric-datagen": [
+      "net.potionstudios.woodwevegot.fabric.datagen.FabricDatagen"
     ]
   },
   "depends": {
