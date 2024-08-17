@@ -2,12 +2,17 @@ package net.potionstudios.woodwevegot.forge;
 
 import com.google.auto.service.AutoService;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.datafix.fixes.References;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
@@ -28,6 +33,13 @@ public class ForgePlatformHandler implements PlatformHandler {
 		return FMLPaths.CONFIGDIR.get().resolve(WoodWeveGot.MOD_ID);
 	}
 
+	private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, WoodWeveGot.MOD_ID);
+
+	@Override
+	public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String key, Supplier<BlockEntityType.Builder<T>> builder) {
+		return BLOCK_ENTITIES.register(key, () -> builder.get().build(Util.fetchChoiceType(References.BLOCK_ENTITY, key)));
+	}
+
 	public static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();
 
 	@Override
@@ -43,5 +55,6 @@ public class ForgePlatformHandler implements PlatformHandler {
 
 	public static void register(IEventBus bus) {
 		CACHED.values().forEach(deferredRegister -> deferredRegister.register(bus));
+		BLOCK_ENTITIES.register(bus);
 	}
 }

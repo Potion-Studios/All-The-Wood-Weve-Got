@@ -2,6 +2,8 @@ package net.potionstudios.woodwevegot;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.nio.file.Path;
 import java.util.ServiceLoader;
@@ -28,6 +30,15 @@ public interface PlatformHandler {
 	 * @return The path to the config directory
 	 */
 	Path configPath();
+
+	/**
+	 * Registers a block entity with the specified parameters
+	 * @see BlockEntityType
+	 * @param key The id/name of the block entity
+	 * @param builder The builder for the block entity
+	 * @return Supplier of the BlockEntityType
+	 */
+	<T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String key, Supplier<BlockEntityType.Builder<T>> builder);
 
 	private static <T> T load(Class<T> clazz) {
 		final T loadedService = ServiceLoader.load(clazz)
