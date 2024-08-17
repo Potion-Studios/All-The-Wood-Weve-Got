@@ -18,6 +18,7 @@ public class WoodWeveGotForge {
         IEventBus MOD_BUS = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus EVENT_BUS = MinecraftForge.EVENT_BUS;
         WoodWeveGot.init();
+        ForgePlatformHandler.register(MOD_BUS);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> WoodWeveGotClientForge.init(MOD_BUS));
     }
 }

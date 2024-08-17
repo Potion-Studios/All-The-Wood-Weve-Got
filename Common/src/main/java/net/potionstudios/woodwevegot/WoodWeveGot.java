@@ -1,6 +1,7 @@
 package net.potionstudios.woodwevegot;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 public class WoodWeveGot {
@@ -16,5 +17,9 @@ public class WoodWeveGot {
      */
     public static void init() {
 
+    }
+
+    public static ResourceLocation id(String name) {
+        return new ResourceLocation(MOD_ID, name);
     }
 }
