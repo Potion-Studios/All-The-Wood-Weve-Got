@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "woodwevegot",
+  "version": "${version}",
+  "name": "All The Wood We've Got",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Joseph T. McQuigg (JT122406)",
+    "AOCAWOL"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": ""
+  },
+  "license": "All Rights Reserved",
+  "icon": "assets/examplemod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.potionstudios.woodwevegot.fabric.WoodWeveGotFabric"
+    ],
+    "client": [
+      "net.potionstudios.woodwevegot.fabric.client.WoodWeveGotClientFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.20.1"
+  }
+}
