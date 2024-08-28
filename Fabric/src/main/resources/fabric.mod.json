@@ -3,14 +3,14 @@
   "id": "woodwevegot",
   "version": "${version}",
   "name": "All The Wood We've Got",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Adds a bunch of wood varants like chests and ladders based on bwg wood",
   "authors": [
     "Joseph T. McQuigg (JT122406)",
     "AOCAWOL"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": ""
+    "homepage": "https://potionstudios.net/",
+    "sources": "https://github.com/Potion-Studios/All-The-Wood-Weve-Got"
   },
   "license": "All Rights Reserved",
   "icon": "assets/examplemod/icon.png",
@@ -28,6 +28,7 @@
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.1"
+    "minecraft": ">=1.20.1",
+    "biomeswevegone": ">=1.1.2-Beta"
   }
 }

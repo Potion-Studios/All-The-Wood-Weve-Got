@@ -34,6 +34,16 @@ subprojects {
         maven("https://maven.fabricmc.net/")
         maven("https://maven.minecraftforge.net/")
         maven("https://maven.neoforged.net/releases/")
+        maven("https://maven.architectury.dev/")
+        maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+        maven("https://maven.jt-dev.tech/releases")
+        maven("https://maven.jt-dev.tech/snapshots")
+        maven("https://api.modrinth.com/maven").content { includeGroup("maven.modrinth") }
+        maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
+        maven("https://maven2.bai.lol").content {
+            includeGroup("lol.bai")
+            includeGroup("mcp.mobius.waila")
+        }
     }
 
     @Suppress("UnstableApiUsage")
