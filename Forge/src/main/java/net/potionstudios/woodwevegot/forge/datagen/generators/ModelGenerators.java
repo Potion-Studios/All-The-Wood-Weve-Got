@@ -54,20 +54,20 @@ public class ModelGenerators {
         protected void registerStatesAndModels() {
             WWGWoodSet.getWoodSets().forEach(set -> {
                 if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "ladder"), PackType.CLIENT_RESOURCES)) {
-                    ModelFile modelFile = models().withExistingParent(name(set.ladder()), "ladder").texture("all", woodBlockTexture(set.getWoodSet().name(), "ladder"));
+                    ModelFile modelFile = models().withExistingParent(name(set.ladder()), "ladder")
+                            .texture("texture", woodBlockTexture(set.getWoodSet().name(), "ladder"))
+                            .texture("particle", woodBlockTexture(set.getWoodSet().name(), "ladder"))
+                            .renderType("cutout");
                     getVariantBuilder(set.ladder()).forAllStatesExcept(blockState -> {
-                        if (blockState.getValue(LadderBlock.FACING) == Direction.EAST) {
+                        if (blockState.getValue(LadderBlock.FACING) == Direction.EAST)
                             return ConfiguredModel.builder().modelFile(modelFile).rotationY(90).build();
-                        } else if (blockState.getValue(LadderBlock.FACING) == Direction.SOUTH) {
+                        else if (blockState.getValue(LadderBlock.FACING) == Direction.SOUTH)
                             return ConfiguredModel.builder().modelFile(modelFile).rotationY(180).build();
-                        } else if (blockState.getValue(LadderBlock.FACING) == Direction.WEST) {
+                        else if (blockState.getValue(LadderBlock.FACING) == Direction.WEST)
                             return ConfiguredModel.builder().modelFile(modelFile).rotationY(270).build();
-                        } else {
-                            return ConfiguredModel.builder().modelFile(modelFile).build();
-                        }
+                        else return ConfiguredModel.builder().modelFile(modelFile).build();
                     }, LadderBlock.WATERLOGGED);
                     simpleBlockItem(set.ladder(), modelFile);
-                    //ConfiguredModel.builder()
                 }
             });
         }

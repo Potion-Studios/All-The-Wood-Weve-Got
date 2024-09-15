@@ -1,6 +1,8 @@
 {
   "parent": "minecraft:block/ladder",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "all": "woodwevegot:block/blue_enchanted/ladder"
+    "particle": "woodwevegot:block/blue_enchanted/ladder",
+    "texture": "woodwevegot:block/blue_enchanted/ladder"
   }
 }

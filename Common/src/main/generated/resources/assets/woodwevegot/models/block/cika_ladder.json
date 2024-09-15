@@ -1,6 +1,8 @@
 {
   "parent": "minecraft:block/ladder",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "all": "woodwevegot:block/cika/ladder"
+    "particle": "woodwevegot:block/cika/ladder",
+    "texture": "woodwevegot:block/cika/ladder"
   }
 }

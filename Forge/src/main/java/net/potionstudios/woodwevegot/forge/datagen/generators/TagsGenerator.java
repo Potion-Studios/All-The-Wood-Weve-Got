@@ -4,10 +4,14 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.potionstudios.woodwevegot.WoodWeveGot;
+import net.potionstudios.woodwevegot.tags.WWGBlockTags;
+import net.potionstudios.woodwevegot.tags.WWGItemTags;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,7 +42,9 @@ public class TagsGenerator {
         protected void addTags(HolderLookup.@NotNull Provider provider) {
             WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
                 tag(Tags.Blocks.BARRELS_WOODEN).add(wwgWoodSet.barrel());
+                tag(WWGBlockTags.LADDERS).add(wwgWoodSet.ladder());
             });
+            tag(BlockTags.CLIMBABLE).addTag(WWGBlockTags.LADDERS);
         }
     }
 
@@ -55,6 +61,7 @@ public class TagsGenerator {
         @Override
         protected void addTags(HolderLookup.@NotNull Provider provider) {
             copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
+            copy(WWGBlockTags.LADDERS, WWGItemTags.LADDERS);
         }
     }
 }
