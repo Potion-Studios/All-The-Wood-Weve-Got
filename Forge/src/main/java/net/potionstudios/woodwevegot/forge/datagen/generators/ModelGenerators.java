@@ -6,6 +6,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.level.block.BarrelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LadderBlock;
 import net.minecraftforge.client.model.generators.*;
@@ -71,7 +72,19 @@ public class ModelGenerators {
                 }
                 if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
                     ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top"));
-                    models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top_open"));
+                    ModelFile open =  models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top_open"));
+                    getVariantBuilder(set.barrel()).forAllStates(blockState -> {
+                        ModelFile current = modelFile;
+                        if (blockState.getValue(BarrelBlock.OPEN))
+                            current = open;
+                        return switch (blockState.getValue(BarrelBlock.FACING)) {
+                            case DOWN -> ConfiguredModel.builder().modelFile(current).rotationX(180).build();
+                            case EAST -> ConfiguredModel.builder().modelFile(current).rotationY(90).rotationX(90).build();
+                            case SOUTH -> ConfiguredModel.builder().modelFile(current).rotationX(90).rotationY(180).build();
+                            case WEST -> ConfiguredModel.builder().modelFile(current).rotationY(270).rotationX(90).build();
+                            default -> ConfiguredModel.builder().modelFile(current).build();
+                        };
+                    });
                     simpleBlockItem(set.barrel(), modelFile);
                 }
             });
