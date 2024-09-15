@@ -1,7 +1,9 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.world.level.block.BarrelBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
 
 import java.util.ArrayList;
@@ -17,8 +19,8 @@ public class WWGWoodSet {
 
 	public WWGWoodSet(Supplier<BWGWoodSet> woodSet) {
 		this.woodSet = woodSet;
-		this.barrel = null;
-		this.ladder = null;
+		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new);
+		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
 		woodSets.add(this);
 	}
 

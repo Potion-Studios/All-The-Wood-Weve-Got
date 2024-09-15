@@ -14,6 +14,6 @@ public class WWGItems {
     }
 
     public static void items() {
-        WoodWeveGot.LOGGER.info("Registering Wall the Wood We've Got items");
+        WoodWeveGot.LOGGER.info("Registering All the Wood We've Got items");
     }
 }
