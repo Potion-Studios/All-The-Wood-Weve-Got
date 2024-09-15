@@ -1,5 +1,5 @@
 plugins {
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
 }
 
 architectury {
@@ -35,6 +35,8 @@ dependencies {
 
     "common"(project(":Common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":Common", "transformProductionFabric"))
+
+    modLocalRuntime("me.djtheredstoner:DevAuth-fabric:${project.properties["devauth_version"]}")
 
     modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Fabric:${project.properties["bwg_version"]}") { isTransitive = false }
     modRuntimeOnly("com.github.glitchfiend:TerraBlender-fabric:$minecraftVersion-${project.properties["terrablender_version"]}")

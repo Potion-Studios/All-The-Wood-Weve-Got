@@ -1,5 +1,5 @@
 plugins {
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
 }
 
 architectury {
@@ -48,6 +48,8 @@ dependencies {
 
     "common"(project(":Common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":Common", "transformProductionForge"))
+
+    modLocalRuntime("me.djtheredstoner:DevAuth-forge-latest:${project.properties["devauth_version"]}")
 
     modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Forge:${project.properties["bwg_version"]}") { isTransitive = false }
     implementation("com.eliotlash.mclib:mclib:20")
