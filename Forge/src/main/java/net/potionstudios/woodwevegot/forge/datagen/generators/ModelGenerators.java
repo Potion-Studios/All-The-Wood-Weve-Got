@@ -69,6 +69,11 @@ public class ModelGenerators {
                     }, LadderBlock.WATERLOGGED);
                     simpleBlockItem(set.ladder(), modelFile);
                 }
+                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
+                    ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top"));
+                    models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top_open"));
+                    simpleBlockItem(set.barrel(), modelFile);
+                }
             });
         }
 

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "woodwevegot:block/cika/barrel_bottom",
+    "side": "woodwevegot:block/cika/barrel_side",
+    "top": "woodwevegot:block/cika/barrel_top"
+  }
+}
