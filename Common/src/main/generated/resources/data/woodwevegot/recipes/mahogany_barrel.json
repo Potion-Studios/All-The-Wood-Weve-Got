@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "biomeswevegone:mahogany_planks"
+    },
+    "S": {
+      "item": "biomeswevegone:mahogany_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "item": "woodwevegot:mahogany_barrel"
+  },
+  "show_notification": true
+}

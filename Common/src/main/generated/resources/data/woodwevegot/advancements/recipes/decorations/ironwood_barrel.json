@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ironwood_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:ironwood_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ironwood_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:ironwood_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:ironwood_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ironwood_planks",
+      "has_ironwood_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:ironwood_barrel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

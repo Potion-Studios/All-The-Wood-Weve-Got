@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "biomeswevegone:witch_hazel_planks"
+    },
+    "S": {
+      "item": "biomeswevegone:witch_hazel_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "item": "woodwevegot:witch_hazel_barrel"
+  },
+  "show_notification": true
+}

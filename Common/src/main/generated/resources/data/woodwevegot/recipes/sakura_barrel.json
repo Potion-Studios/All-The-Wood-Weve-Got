@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "biomeswevegone:sakura_planks"
+    },
+    "S": {
+      "item": "biomeswevegone:sakura_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "item": "woodwevegot:sakura_barrel"
+  },
+  "show_notification": true
+}

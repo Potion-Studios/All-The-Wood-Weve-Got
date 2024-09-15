@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_baobab_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:baobab_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_baobab_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:baobab_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:baobab_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_baobab_planks",
+      "has_baobab_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:baobab_barrel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

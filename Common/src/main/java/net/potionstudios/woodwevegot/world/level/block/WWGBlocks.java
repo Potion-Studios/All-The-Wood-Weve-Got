@@ -4,6 +4,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWood;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
@@ -36,6 +37,7 @@ public class WWGBlocks {
 
     public static void blocks() {
         WoodWeveGot.LOGGER.info("Registering All The Wood We've Got Blocks");
+        BWGWood.wood();
         BWGWoodSet.woodsets().forEach(bwgWoodSet -> new WWGWoodSet(() -> bwgWoodSet));
     }
 }

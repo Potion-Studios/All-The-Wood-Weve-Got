@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "biomeswevegone:blue_enchanted_planks"
+    },
+    "S": {
+      "item": "biomeswevegone:blue_enchanted_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "item": "woodwevegot:blue_enchanted_barrel"
+  },
+  "show_notification": true
+}

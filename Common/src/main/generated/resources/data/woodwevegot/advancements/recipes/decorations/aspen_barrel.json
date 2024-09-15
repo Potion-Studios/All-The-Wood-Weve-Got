@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aspen_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:aspen_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_aspen_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "biomeswevegone:aspen_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:aspen_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_aspen_planks",
+      "has_aspen_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:aspen_barrel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

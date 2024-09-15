@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "biomeswevegone:rainbow_eucalyptus_planks"
+    },
+    "S": {
+      "item": "biomeswevegone:rainbow_eucalyptus_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "item": "woodwevegot:rainbow_eucalyptus_barrel"
+  },
+  "show_notification": true
+}
