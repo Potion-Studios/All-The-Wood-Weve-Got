@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "all": "woodwevegot:block/green_enchanted/ladder"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "woodwevegot:block/blue_enchanted_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "woodwevegot:block/blue_enchanted_ladder"
+    },
+    "facing=south": {
+      "model": "woodwevegot:block/blue_enchanted_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "woodwevegot:block/blue_enchanted_ladder",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "woodwevegot:block/cika_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "woodwevegot:block/cika_ladder"
+    },
+    "facing=south": {
+      "model": "woodwevegot:block/cika_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "woodwevegot:block/cika_ladder",
+      "y": 270
+    }
+  }
+}
