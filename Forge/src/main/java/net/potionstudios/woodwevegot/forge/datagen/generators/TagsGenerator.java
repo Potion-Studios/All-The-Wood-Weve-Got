@@ -5,7 +5,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -41,9 +40,10 @@ public class TagsGenerator {
         @Override
         protected void addTags(HolderLookup.@NotNull Provider provider) {
             WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
-                tag(Tags.Blocks.BARRELS_WOODEN).add(wwgWoodSet.barrel());
+                tag(WWGBlockTags.BARRELS).add(wwgWoodSet.barrel());
                 tag(WWGBlockTags.LADDERS).add(wwgWoodSet.ladder());
             });
+            tag(Tags.Blocks.BARRELS_WOODEN).addTag(WWGBlockTags.BARRELS);
             tag(BlockTags.CLIMBABLE).addTag(WWGBlockTags.LADDERS);
         }
     }
@@ -60,8 +60,9 @@ public class TagsGenerator {
 
         @Override
         protected void addTags(HolderLookup.@NotNull Provider provider) {
-            copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
+            copy(WWGBlockTags.BARRELS, WWGItemTags.BARRELS);
             copy(WWGBlockTags.LADDERS, WWGItemTags.LADDERS);
+            copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
         }
     }
 }

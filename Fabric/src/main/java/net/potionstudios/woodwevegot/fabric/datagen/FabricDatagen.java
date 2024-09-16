@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
-import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
+import net.potionstudios.woodwevegot.tags.WWGBlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,9 +32,7 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 
 		@Override
 		protected void addTags(HolderLookup.Provider arg) {
-			WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
-				getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_BARRELS).add(wwgWoodSet.barrel());
-			});
+			tag(ConventionalBlockTags.WOODEN_BARRELS).addTag(WWGBlockTags.BARRELS);
 		}
 	}
 

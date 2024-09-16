@@ -7,6 +7,7 @@ import net.potionstudios.woodwevegot.WoodWeveGot;
 
 public class WWGItemTags {
 
+    public static final TagKey<Item> BARRELS = create("barrels");
     public static final TagKey<Item> LADDERS = create("ladders");
 
     private static TagKey<Item> create(String name) {

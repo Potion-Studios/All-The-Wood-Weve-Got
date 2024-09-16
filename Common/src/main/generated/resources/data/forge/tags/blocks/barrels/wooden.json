@@ -1,28 +1,5 @@
 {
   "values": [
-    "woodwevegot:aspen_barrel",
-    "woodwevegot:baobab_barrel",
-    "woodwevegot:blue_enchanted_barrel",
-    "woodwevegot:cika_barrel",
-    "woodwevegot:cypress_barrel",
-    "woodwevegot:ebony_barrel",
-    "woodwevegot:fir_barrel",
-    "woodwevegot:florus_barrel",
-    "woodwevegot:green_enchanted_barrel",
-    "woodwevegot:holly_barrel",
-    "woodwevegot:ironwood_barrel",
-    "woodwevegot:jacaranda_barrel",
-    "woodwevegot:mahogany_barrel",
-    "woodwevegot:maple_barrel",
-    "woodwevegot:palm_barrel",
-    "woodwevegot:pine_barrel",
-    "woodwevegot:rainbow_eucalyptus_barrel",
-    "woodwevegot:redwood_barrel",
-    "woodwevegot:sakura_barrel",
-    "woodwevegot:skyris_barrel",
-    "woodwevegot:white_mangrove_barrel",
-    "woodwevegot:willow_barrel",
-    "woodwevegot:witch_hazel_barrel",
-    "woodwevegot:zelkova_barrel"
+    "#woodwevegot:barrels"
   ]
 }
