@@ -36,6 +36,10 @@ public class WWGWoodSet {
 		return ladder.get();
 	}
 
+	public String name() {
+		return woodSet.get().name();
+	}
+
 	public static ArrayList<WWGWoodSet> getWoodSets() {
 		return woodSets;
 	}

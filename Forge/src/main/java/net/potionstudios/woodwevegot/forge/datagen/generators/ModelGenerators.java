@@ -1,20 +1,18 @@
 package net.potionstudios.woodwevegot.forge.datagen.generators;
 
-import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.BarrelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LadderBlock;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.potionstudios.biomeswevegone.BiomesWeveGone;
-import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWood;
-import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 
@@ -37,7 +35,25 @@ public class ModelGenerators {
 
         @Override
         protected void registerModels() {
+            WWGWoodSet.getWoodSets().forEach(set -> {
+                try {
+                    simpleItemBlockTexture(set.getWoodSet().name(), set.ladder());
+                } catch (Exception ignored) {
 
+                }
+            });
+        }
+
+        private void simpleItemBlockTexture(String set, ItemLike item) {
+            singleTexture(name(item), mcLoc("item/generated"), "layer0", WoodWeveGot.id(ModelProvider.BLOCK_FOLDER + "/" + set + "/" + name(item).replace(set + "_", "")));
+        }
+
+        private String name(ItemLike item) {
+            return key(item.asItem()).getPath();
+        }
+
+        private ResourceLocation key(Item item) {
+            return ForgeRegistries.ITEMS.getKey(item);
         }
     }
 
@@ -68,7 +84,6 @@ public class ModelGenerators {
                             return ConfiguredModel.builder().modelFile(modelFile).rotationY(270).build();
                         else return ConfiguredModel.builder().modelFile(modelFile).build();
                     }, LadderBlock.WATERLOGGED);
-                    simpleBlockItem(set.ladder(), modelFile);
                 }
                 if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
                     ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top"));

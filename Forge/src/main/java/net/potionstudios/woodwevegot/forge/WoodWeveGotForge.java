@@ -8,6 +8,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.minecraftforge.fml.common.Mod;
 import net.potionstudios.woodwevegot.forge.client.WoodWeveGotClientForge;
+import net.potionstudios.woodwevegot.forge.tabs.WWGCreativeTabs;
 
 /**
  * Main class for the mod on the Forge platform.
@@ -20,5 +21,6 @@ public class WoodWeveGotForge {
         WoodWeveGot.init();
         ForgePlatformHandler.register(MOD_BUS);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> WoodWeveGotClientForge.init(MOD_BUS));
+        MOD_BUS.addListener(WWGCreativeTabs::addToCreativeTab);
     }
 }
