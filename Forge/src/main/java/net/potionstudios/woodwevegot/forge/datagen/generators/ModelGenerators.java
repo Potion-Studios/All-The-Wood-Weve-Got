@@ -38,7 +38,7 @@ public class ModelGenerators {
         protected void registerModels() {
             WWGWoodSet.getWoodSets().forEach(set -> {
                 try {
-                    simpleItemBlockTexture(set.getWoodSet().name(), set.ladder());
+                    simpleItemBlockTexture(set.name(), set.ladder());
                 } catch (Exception ignored) {
 
                 }
@@ -71,10 +71,10 @@ public class ModelGenerators {
         @Override
         protected void registerStatesAndModels() {
             WWGWoodSet.getWoodSets().forEach(set -> {
-                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "ladder"), PackType.CLIENT_RESOURCES)) {
+                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.name(), "ladder"), PackType.CLIENT_RESOURCES)) {
                     ModelFile modelFile = models().withExistingParent(name(set.ladder()), "ladder")
-                            .texture("texture", woodBlockTexture(set.getWoodSet().name(), "ladder"))
-                            .texture("particle", woodBlockTexture(set.getWoodSet().name(), "ladder"))
+                            .texture("texture", woodBlockTexture(set.name(), "ladder"))
+                            .texture("particle", woodBlockTexture(set.name(), "ladder"))
                             .renderType("cutout");
                     getVariantBuilder(set.ladder()).forAllStatesExcept(blockState -> {
                         if (blockState.getValue(LadderBlock.FACING) == Direction.EAST)
@@ -86,9 +86,9 @@ public class ModelGenerators {
                         else return ConfiguredModel.builder().modelFile(modelFile).build();
                     }, LadderBlock.WATERLOGGED);
                 }
-                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.getWoodSet().name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
-                    ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top"));
-                    ModelFile open =  models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.getWoodSet().name(), "barrel_side"), woodBlockTexture(set.getWoodSet().name(), "barrel_bottom"), woodBlockTexture(set.getWoodSet().name(), "barrel_top_open"));
+                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
+                    ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.name(), "barrel_side"), woodBlockTexture(set.name(), "barrel_bottom"), woodBlockTexture(set.name(), "barrel_top"));
+                    ModelFile open =  models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.name(), "barrel_side"), woodBlockTexture(set.name(), "barrel_bottom"), woodBlockTexture(set.name(), "barrel_top_open"));
                     getVariantBuilder(set.barrel()).forAllStates(blockState -> {
                         ModelFile current = modelFile;
                         if (blockState.getValue(BarrelBlock.OPEN))
@@ -103,8 +103,6 @@ public class ModelGenerators {
                     });
                     simpleBlockItem(set.barrel(), modelFile);
                 }
-
-                simpleBlock(set.chest(), models().sign("particle", woodBlockTextureBWG(set.getWoodSet().name(), "planks")));
             });
         }
 

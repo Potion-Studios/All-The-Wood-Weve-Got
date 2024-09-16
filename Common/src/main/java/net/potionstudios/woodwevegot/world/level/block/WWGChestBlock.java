@@ -11,8 +11,16 @@ import net.potionstudios.woodwevegot.world.level.block.entities.WWGBlockEntities
 import org.jetbrains.annotations.NotNull;
 
 public class WWGChestBlock extends ChestBlock {
-	protected WWGChestBlock() {
+
+	private final String set;
+
+	protected WWGChestBlock(String set) {
 		super(Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD).ignitedByLava(), WWGBlockEntities.CHEST::get);
+		this.set = set;
+	}
+
+	public String getSet() {
+		return set;
 	}
 
 	@Override
