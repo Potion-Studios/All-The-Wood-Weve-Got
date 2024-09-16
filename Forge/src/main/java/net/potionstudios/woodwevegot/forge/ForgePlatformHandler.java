@@ -7,6 +7,9 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.datafix.fixes.References;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,6 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
+import net.potionstudios.woodwevegot.forge.item.ForgeBlockItem;
 
 import java.nio.file.Path;
 import java.util.Map;
@@ -38,6 +42,11 @@ public class ForgePlatformHandler implements PlatformHandler {
 	@Override
 	public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String key, Supplier<BlockEntityType.Builder<T>> builder) {
 		return BLOCK_ENTITIES.register(key, () -> builder.get().build(Util.fetchChoiceType(References.BLOCK_ENTITY, key)));
+	}
+
+	@Override
+	public Supplier<Item> createBlockItem(Supplier<? extends Block> block, int burnTime) {
+		return () -> new ForgeBlockItem(block.get(), new BlockItem.Properties(), burnTime);
 	}
 
 	public static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();

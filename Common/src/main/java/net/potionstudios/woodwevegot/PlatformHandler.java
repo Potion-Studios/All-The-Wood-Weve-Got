@@ -2,6 +2,9 @@ package net.potionstudios.woodwevegot;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -46,6 +49,10 @@ public interface PlatformHandler {
 				.orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
 		WoodWeveGot.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
 		return loadedService;
+	}
+
+	default Supplier<Item> createBlockItem(Supplier<? extends Block> block, int burnTime) {
+		return () -> new BlockItem(block.get(), new BlockItem.Properties());
 	}
 
 	<T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value);

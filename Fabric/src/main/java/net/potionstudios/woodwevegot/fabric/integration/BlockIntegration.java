@@ -9,9 +9,9 @@ public class BlockIntegration {
 		registerFuels();
 	}
 
-
 	private static void registerFuels() {
 		FuelRegistry.INSTANCE.add(WWGItemTags.BARRELS, 300);
 		FuelRegistry.INSTANCE.add(WWGItemTags.LADDERS, 300);
+		FuelRegistry.INSTANCE.add(WWGItemTags.CHESTS, 300);
 	}
 }

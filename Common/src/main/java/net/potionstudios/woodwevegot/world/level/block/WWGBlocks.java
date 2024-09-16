@@ -18,9 +18,9 @@ public class WWGBlocks {
     public static ArrayList<Supplier<? extends Block>> BLOCKS = new ArrayList<>();
     public static ArrayList<Supplier<? extends Item>> BLOCK_ITEMS = new ArrayList<>();
 
-    public static <B extends Block> Supplier<B> registerBlockItem(String key, Supplier<B> blockSupplier) {
+    public static <B extends Block> Supplier<B> registerBlockItem(String key, Supplier<B> blockSupplier, int burnTime) {
         Supplier<B> block = registerBlock(key, blockSupplier);
-        Supplier<Item> item = WWGItems.register(key, () -> new BlockItem(block.get(), new Item.Properties()));
+        Supplier<Item> item = WWGItems.register(key, PlatformHandler.PLATFORM_HANDLER.createBlockItem(block, burnTime));
         BLOCK_ITEMS.add(item);
         return block;
     }

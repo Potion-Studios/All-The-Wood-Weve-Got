@@ -21,9 +21,9 @@ public class WWGWoodSet {
 
 	public WWGWoodSet(Supplier<BWGWoodSet> woodSet) {
 		this.woodSet = woodSet;
-		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new);
-		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-		this.chest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_chest", WWGChestBlock::new);
+		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new, 300);
+		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), 300);
+		this.chest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_chest", WWGChestBlock::new, 300);
 		woodSets.add(this);
 	}
 
