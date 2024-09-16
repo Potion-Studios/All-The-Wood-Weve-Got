@@ -12,6 +12,7 @@ import net.potionstudios.woodwevegot.forge.datagen.generators.LangGenerator;
 import net.potionstudios.woodwevegot.forge.datagen.generators.ModelGenerators;
 import net.potionstudios.woodwevegot.forge.datagen.generators.RecipeGenerator;
 import net.potionstudios.woodwevegot.forge.datagen.generators.TagsGenerator;
+import net.potionstudios.woodwevegot.forge.datagen.generators.loot.LootGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -34,6 +35,7 @@ class DataGeneratorsRegister {
 		generator.addProvider(event.includeServer(), new RecipeGenerator(output));
 		generator.addProvider(event.includeClient(), new LangGenerator(output, "en_us"));
 		TagsGenerator.init(generator, event.includeServer(), output, lookupProvider, existingFileHelper);
+		generator.addProvider(event.includeServer(), new LootGenerator(output));
 	}
 
 }
