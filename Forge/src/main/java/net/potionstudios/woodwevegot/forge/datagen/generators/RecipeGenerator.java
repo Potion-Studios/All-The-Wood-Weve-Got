@@ -1,11 +1,17 @@
 package net.potionstudios.woodwevegot.forge.datagen.generators;
 
+import net.minecraft.advancements.critereon.ContextAwarePredicate;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,6 +46,19 @@ public class RecipeGenerator extends RecipeProvider {
                     .pattern("###")
                     .pattern("# #")
                     .unlockedBy("has_stick", has(Items.STICK))
+                    .save(writer);
+
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, wwgWoodSet.chest())
+                    .define('#', wwgWoodSet.getWoodSet().planks())
+                    .pattern("###")
+                    .pattern("# #")
+                    .pattern("###")
+                    .unlockedBy(
+                            "has_lots_of_items",
+                            new InventoryChangeTrigger.TriggerInstance(
+                                    ContextAwarePredicate.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0]
+                            )
+                    )
                     .save(writer);
         });
     }

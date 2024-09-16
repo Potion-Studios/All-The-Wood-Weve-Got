@@ -3,9 +3,12 @@ package net.potionstudios.woodwevegot.forge.client;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.potionstudios.woodwevegot.client.WoodWeveGotClient;
+
+import java.util.function.Consumer;
 
 @OnlyIn(Dist.CLIENT)
 public class WoodWeveGotClientForge {
@@ -16,6 +19,7 @@ public class WoodWeveGotClientForge {
      */
     public static void init(IEventBus eventBus) {
         eventBus.addListener(WoodWeveGotClientForge::forgeClientSetup);
+        eventBus.addListener((Consumer<EntityRenderersEvent.RegisterRenderers>) event -> WoodWeveGotClient.registerBlockEntityRenderers(event::registerBlockEntityRenderer));
     }
 
     /**

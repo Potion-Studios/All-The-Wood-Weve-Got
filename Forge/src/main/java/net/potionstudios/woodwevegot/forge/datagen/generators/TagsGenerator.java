@@ -42,8 +42,10 @@ public class TagsGenerator {
             WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
                 tag(WWGBlockTags.BARRELS).add(wwgWoodSet.barrel());
                 tag(WWGBlockTags.LADDERS).add(wwgWoodSet.ladder());
+                tag(WWGBlockTags.CHESTS).add(wwgWoodSet.chest());
             });
             tag(Tags.Blocks.BARRELS_WOODEN).addTag(WWGBlockTags.BARRELS);
+            tag(Tags.Blocks.CHESTS_WOODEN).addTag(WWGBlockTags.CHESTS);
             tag(BlockTags.CLIMBABLE).addTag(WWGBlockTags.LADDERS);
         }
     }
@@ -62,7 +64,9 @@ public class TagsGenerator {
         protected void addTags(HolderLookup.@NotNull Provider provider) {
             copy(WWGBlockTags.BARRELS, WWGItemTags.BARRELS);
             copy(WWGBlockTags.LADDERS, WWGItemTags.LADDERS);
+            copy(WWGBlockTags.CHESTS, WWGItemTags.CHESTS);
             copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
+            copy(Tags.Blocks.CHESTS_WOODEN, Tags.Items.CHESTS_WOODEN);
         }
     }
 }

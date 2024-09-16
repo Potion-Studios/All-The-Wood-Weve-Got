@@ -24,6 +24,7 @@ class BlockLootGenerator  extends BlockLootSubProvider {
 		WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
 			add(wwgWoodSet.barrel(), this::createNameableBlockEntityTable);
 			dropSelf(wwgWoodSet.ladder());
+			add(wwgWoodSet.chest(), this::createNameableBlockEntityTable);
 		});
 	}
 

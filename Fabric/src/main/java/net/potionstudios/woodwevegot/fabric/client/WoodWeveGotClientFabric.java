@@ -6,6 +6,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.potionstudios.woodwevegot.client.WoodWeveGotClient;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 
@@ -15,11 +16,10 @@ public class WoodWeveGotClientFabric implements ClientModInitializer {
     public void onInitializeClient() {
         WoodWeveGotClient.onInitialize(Minecraft.getInstance());
         registerRenderTypes();
+        WoodWeveGotClient.registerBlockEntityRenderers(BlockEntityRenderers::register);
     }
 
     private static void registerRenderTypes() {
-        WWGWoodSet.getWoodSets().forEach(set -> {
-            BlockRenderLayerMap.INSTANCE.putBlock(set.ladder(), RenderType.cutout());
-        });
+        WWGWoodSet.getWoodSets().forEach(set -> BlockRenderLayerMap.INSTANCE.putBlock(set.ladder(), RenderType.cutout()));
     }
 }

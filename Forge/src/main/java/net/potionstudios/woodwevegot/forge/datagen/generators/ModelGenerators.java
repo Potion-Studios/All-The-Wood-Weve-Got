@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.LadderBlock;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.potionstudios.biomeswevegone.BiomesWeveGone;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 
@@ -102,6 +103,8 @@ public class ModelGenerators {
                     });
                     simpleBlockItem(set.barrel(), modelFile);
                 }
+
+                simpleBlock(set.chest(), models().sign("particle", woodBlockTextureBWG(set.getWoodSet().name(), "planks")));
             });
         }
 
@@ -116,6 +119,10 @@ public class ModelGenerators {
 
         private ResourceLocation woodBlockTexture(String type, String name) {
             return WoodWeveGot.id(ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name);
+        }
+
+        private ResourceLocation woodBlockTextureBWG(String type, String name) {
+            return BiomesWeveGone.id(ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name);
         }
 
         private ResourceLocation woodBlockTextureFolder(String type, String name) {

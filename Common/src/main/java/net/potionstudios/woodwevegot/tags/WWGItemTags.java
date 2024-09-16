@@ -9,6 +9,7 @@ public class WWGItemTags {
 
     public static final TagKey<Item> BARRELS = create("barrels");
     public static final TagKey<Item> LADDERS = create("ladders");
+    public static final TagKey<Item> CHESTS = create("chests");
 
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, WoodWeveGot.id(name));

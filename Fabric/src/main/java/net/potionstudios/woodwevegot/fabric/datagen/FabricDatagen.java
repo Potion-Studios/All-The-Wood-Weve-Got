@@ -33,6 +33,7 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 		@Override
 		protected void addTags(HolderLookup.Provider arg) {
 			tag(ConventionalBlockTags.WOODEN_BARRELS).addTag(WWGBlockTags.BARRELS);
+			tag(ConventionalBlockTags.CHESTS).addTag(WWGBlockTags.CHESTS);
 		}
 	}
 
@@ -45,6 +46,7 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 		@Override
 		protected void addTags(HolderLookup.Provider arg) {
 			copy(ConventionalBlockTags.WOODEN_BARRELS, ConventionalItemTags.WOODEN_BARRELS);
+			copy(ConventionalBlockTags.CHESTS, ConventionalItemTags.CHESTS);
 		}
 	}
 }
