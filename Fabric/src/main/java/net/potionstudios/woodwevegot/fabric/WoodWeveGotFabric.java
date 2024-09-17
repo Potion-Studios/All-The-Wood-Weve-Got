@@ -1,5 +1,6 @@
 package net.potionstudios.woodwevegot.fabric;
 
+import net.potionstudios.biomeswevegone.fabric.BiomesWeveGoneFabric;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.fabricmc.api.ModInitializer;
 import net.potionstudios.woodwevegot.fabric.integration.BlockIntegration;
@@ -11,6 +12,7 @@ public class WoodWeveGotFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        BiomesWeveGoneFabric.initializeBiomesWeveGone(WoodWeveGot.MOD_ID);
         WoodWeveGot.init();
         BlockIntegration.init();
     }

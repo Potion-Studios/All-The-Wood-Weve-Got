@@ -11,7 +11,7 @@ public class WWGChestBlockEntity extends ChestBlockEntity {
 		super(type, pos, blockState);
 	}
 
-	protected WWGChestBlockEntity(BlockPos pos, BlockState blockState) {
+	public WWGChestBlockEntity(BlockPos pos, BlockState blockState) {
 		this(WWGBlockEntities.CHEST.get(), pos, blockState);
 	}
 }
