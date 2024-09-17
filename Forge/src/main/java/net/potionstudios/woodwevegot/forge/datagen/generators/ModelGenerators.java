@@ -39,8 +39,6 @@ public class ModelGenerators {
             WWGWoodSet.getWoodSets().forEach(set -> {
                 try {
                     simpleItemBlockTexture(set.name(), set.ladder());
-                    //withExistingParent(name(set.chest()), mcLoc("item/chest")).texture("particle", woodBlockTexture(set.name(), "planks"));
-                    //withExistingParent(name(set.trappedChest()), mcLoc("item/chest")).texture("particle", woodBlockTexture(set.name(), "planks"));
                 } catch (Exception ignored) {
 
                 }

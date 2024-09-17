@@ -5,10 +5,7 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -59,6 +56,12 @@ public class RecipeGenerator extends RecipeProvider {
                                     ContextAwarePredicate.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0]
                             )
                     )
+                    .save(writer);
+
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, wwgWoodSet.trappedChest())
+                    .requires(wwgWoodSet.chest())
+                    .requires(Blocks.TRIPWIRE_HOOK)
+                    .unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK))
                     .save(writer);
         });
     }
