@@ -43,9 +43,11 @@ public class TagsGenerator {
                 tag(WWGBlockTags.BARRELS).add(wwgWoodSet.barrel());
                 tag(WWGBlockTags.LADDERS).add(wwgWoodSet.ladder());
                 tag(WWGBlockTags.CHESTS).add(wwgWoodSet.chest());
+                tag(WWGBlockTags.TRAPPED_CHESTS).add(wwgWoodSet.trappedChest());
             });
             tag(Tags.Blocks.BARRELS_WOODEN).addTag(WWGBlockTags.BARRELS);
             tag(Tags.Blocks.CHESTS_WOODEN).addTag(WWGBlockTags.CHESTS);
+            tag(Tags.Blocks.CHESTS_TRAPPED).addTag(WWGBlockTags.TRAPPED_CHESTS);
             tag(BlockTags.CLIMBABLE).addTag(WWGBlockTags.LADDERS);
         }
     }
@@ -65,8 +67,10 @@ public class TagsGenerator {
             copy(WWGBlockTags.BARRELS, WWGItemTags.BARRELS);
             copy(WWGBlockTags.LADDERS, WWGItemTags.LADDERS);
             copy(WWGBlockTags.CHESTS, WWGItemTags.CHESTS);
+            copy(WWGBlockTags.TRAPPED_CHESTS, WWGItemTags.TRAPPED_CHESTS);
             copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
             copy(Tags.Blocks.CHESTS_WOODEN, Tags.Items.CHESTS_WOODEN);
+            copy(Tags.Blocks.CHESTS_TRAPPED, Tags.Items.CHESTS_TRAPPED);
         }
     }
 }

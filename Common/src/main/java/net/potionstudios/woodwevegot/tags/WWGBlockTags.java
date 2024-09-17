@@ -10,6 +10,7 @@ public class WWGBlockTags {
     public static final TagKey<Block> BARRELS = create("barrels");
     public static final TagKey<Block> LADDERS = create("ladders");
     public static final TagKey<Block> CHESTS = create("chests");
+    public static final TagKey<Block> TRAPPED_CHESTS = create("trapped_chests");
 
     private static TagKey<Block> create(String name) {
         return TagKey.create(Registries.BLOCK, WoodWeveGot.id(name));

@@ -22,6 +22,7 @@ public class WoodWeveGotClient {
      */
     public static void registerBlockEntityRenderers(BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRendererProvider> consumer) {
         consumer.accept(WWGBlockEntities.CHEST.get(), WWGChestRenderer::new);
+        consumer.accept(WWGBlockEntities.TRAPPED_CHEST.get(), WWGChestRenderer::new);
     }
 
 }

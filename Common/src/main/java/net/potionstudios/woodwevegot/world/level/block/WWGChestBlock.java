@@ -4,19 +4,27 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.potionstudios.woodwevegot.world.level.block.entities.WWGBlockEntities;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public class WWGChestBlock extends ChestBlock {
 
 	private final String set;
 
-	protected WWGChestBlock(String set) {
-		super(Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD).ignitedByLava(), WWGBlockEntities.CHEST::get);
+
+	protected WWGChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, String set) {
+		super(Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD).ignitedByLava(), blockEntityType);
 		this.set = set;
+	}
+	protected WWGChestBlock(String set) {
+		this(WWGBlockEntities.CHEST::get, set);
 	}
 
 	public String getSet() {

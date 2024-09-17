@@ -13,5 +13,6 @@ public class BlockIntegration {
 		FuelRegistry.INSTANCE.add(WWGItemTags.BARRELS, 300);
 		FuelRegistry.INSTANCE.add(WWGItemTags.LADDERS, 300);
 		FuelRegistry.INSTANCE.add(WWGItemTags.CHESTS, 300);
+		FuelRegistry.INSTANCE.add(WWGItemTags.TRAPPED_CHESTS, 300);
 	}
 }

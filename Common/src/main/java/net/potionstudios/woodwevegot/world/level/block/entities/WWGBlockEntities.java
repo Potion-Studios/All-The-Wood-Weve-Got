@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
+import net.potionstudios.woodwevegot.world.level.block.WWGTrappedChestBlock;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 
 import java.util.function.Supplier;
@@ -17,6 +18,9 @@ public class WWGBlockEntities {
 
     public static final Supplier<BlockEntityType<WWGChestBlockEntity>> CHEST = register("chest", () -> BlockEntityType.Builder.of(WWGChestBlockEntity::new,
             WWGWoodSet.getWoodSets().stream().map(WWGWoodSet::chest).toArray(ChestBlock[]::new)));
+
+    public static final Supplier<BlockEntityType<WWGTrappedChestBlockEntity>> TRAPPED_CHEST = register("trapped_chest", () -> BlockEntityType.Builder.of(WWGTrappedChestBlockEntity::new,
+            WWGWoodSet.getWoodSets().stream().map(WWGWoodSet::trappedChest).toArray(WWGTrappedChestBlock[]::new)));
 
     private static <T extends BlockEntity> Supplier<BlockEntityType<T>> register(String key, Supplier<BlockEntityType.Builder<T>> builder) {
         return PlatformHandler.PLATFORM_HANDLER.registerBlockEntity(key, builder);

@@ -25,7 +25,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGChestBlock;
+import net.potionstudios.woodwevegot.world.level.block.WWGTrappedChestBlock;
 import net.potionstudios.woodwevegot.world.level.block.entities.WWGChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entities.WWGTrappedChestBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
@@ -113,6 +115,10 @@ public class WWGChestRenderer extends ChestRenderer<WWGChestBlockEntity> {
 
 	private Material getChestMaterial(WWGChestBlockEntity blockEntity, ChestType type) {
 		String set = ((WWGChestBlock) blockEntity.getBlockState().getBlock()).getSet();
+		if (blockEntity instanceof WWGTrappedChestBlockEntity)
+			return chooseMaterial(type, getChestPath(set, "trapped_left"),
+					getChestPath(set, "trapped_right"), getChestPath(set, "trapped"));
+
 		return chooseMaterial(type, getChestPath(set, "normal_left"),
 				getChestPath(set, "normal_right"), getChestPath(set, "normal"));
 	}

@@ -1,9 +1,6 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
-import net.minecraft.world.level.block.BarrelBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
 
@@ -18,12 +15,14 @@ public class WWGWoodSet {
 	private final Supplier<BarrelBlock> barrel;
 	private final Supplier<LadderBlock> ladder;
 	private final Supplier<ChestBlock> chest;
+	private final Supplier<ChestBlock> trappedChest;
 
 	public WWGWoodSet(Supplier<BWGWoodSet> woodSet) {
 		this.woodSet = woodSet;
 		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new, 300);
 		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), 300);
 		this.chest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_chest", () -> new WWGChestBlock(woodSet.get().name()), 300);
+		this.trappedChest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_trapped_chest", () -> new WWGTrappedChestBlock(woodSet.get().name()), 300);
 		woodSets.add(this);
 	}
 
@@ -41,6 +40,10 @@ public class WWGWoodSet {
 
 	public ChestBlock chest() {
 		return chest.get();
+	}
+
+	public ChestBlock trappedChest() {
+		return trappedChest.get();
 	}
 
 	public String name() {
