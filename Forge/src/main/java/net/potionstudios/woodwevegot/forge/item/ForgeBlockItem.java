@@ -7,12 +7,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.extensions.IForgeItem;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class ForgeBlockItem extends BlockItem implements IForgeItem {
 
 	private final int burnTime;
 
-	public ForgeBlockItem(Block block, Properties properties, int burnTime) {
-		super(block, properties);
+	public ForgeBlockItem(Supplier<? extends Block> block, Properties properties, int burnTime) {
+		super(block.get(), properties);
 		this.burnTime = burnTime;
 	}
 

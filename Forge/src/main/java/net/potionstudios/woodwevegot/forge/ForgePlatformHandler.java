@@ -20,6 +20,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.forge.item.ForgeBlockItem;
+import net.potionstudios.woodwevegot.forge.item.ForgeChestItem;
 
 import java.nio.file.Path;
 import java.util.Map;
@@ -46,7 +47,12 @@ public class ForgePlatformHandler implements PlatformHandler {
 
 	@Override
 	public Supplier<Item> createBlockItem(Supplier<? extends Block> block, int burnTime) {
-		return () -> new ForgeBlockItem(block.get(), new BlockItem.Properties(), burnTime);
+		return () -> new ForgeBlockItem(block, new BlockItem.Properties(), burnTime);
+	}
+
+	@Override
+	public Supplier<Item> createChestBlockItem(Supplier<? extends Block> block) {
+		return () -> new ForgeChestItem(block, new BlockItem.Properties());
 	}
 
 	public static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();

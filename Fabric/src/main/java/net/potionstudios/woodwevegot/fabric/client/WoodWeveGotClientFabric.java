@@ -30,12 +30,10 @@ public class WoodWeveGotClientFabric implements ClientModInitializer {
 
     private static void registerItemRenderers() {
         WWGWoodSet.getWoodSets().forEach(set -> {
-            BuiltinItemRendererRegistry.INSTANCE.register(set.chest(), (stack, mode, matrices, vertexConsumers, light, overlay) -> {
-                Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new WWGChestBlockEntity(BlockPos.ZERO, set.chest().defaultBlockState()), matrices, vertexConsumers, light, overlay);
-            });
-            BuiltinItemRendererRegistry.INSTANCE.register(set.trappedChest(), (stack, mode, matrices, vertexConsumers, light, overlay) -> {
-                Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new WWGTrappedChestBlockEntity(BlockPos.ZERO, set.trappedChest().defaultBlockState()), matrices, vertexConsumers, light, overlay);
-            });
+            BuiltinItemRendererRegistry.INSTANCE.register(set.chest(), (stack, mode, matrices, vertexConsumers, light, overlay) ->
+                    Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new WWGChestBlockEntity(BlockPos.ZERO, set.chest().defaultBlockState()), matrices, vertexConsumers, light, overlay));
+            BuiltinItemRendererRegistry.INSTANCE.register(set.trappedChest(), (stack, mode, matrices, vertexConsumers, light, overlay) ->
+                    Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new WWGTrappedChestBlockEntity(BlockPos.ZERO, set.trappedChest().defaultBlockState()), matrices, vertexConsumers, light, overlay));
         });
     }
 }

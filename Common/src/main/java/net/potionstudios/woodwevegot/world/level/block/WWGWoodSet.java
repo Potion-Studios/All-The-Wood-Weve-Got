@@ -21,8 +21,8 @@ public class WWGWoodSet {
 		this.woodSet = woodSet;
 		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new, 300);
 		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)), 300);
-		this.chest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_chest", () -> new WWGChestBlock(woodSet.get().name()), 300);
-		this.trappedChest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_trapped_chest", () -> new WWGTrappedChestBlock(woodSet.get().name()), 300);
+		this.chest = WWGBlocks.registerChestBlockItem(woodSet.get().name() + "_chest", () -> new WWGChestBlock(woodSet.get().name()));
+		this.trappedChest = WWGBlocks.registerChestBlockItem(woodSet.get().name() + "_trapped_chest", () -> new WWGTrappedChestBlock(woodSet.get().name()));
 		woodSets.add(this);
 	}
 
