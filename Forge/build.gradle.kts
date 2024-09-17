@@ -38,6 +38,7 @@ loom {
         programArgs("--all", "--mod", "woodwevegot")
         programArgs("--output", project(":Common").file("src/main/generated/resources").absolutePath)
         programArgs("--existing", project(":Common").file("src/main/resources").absolutePath)
+        programArgs("--existing-mod", "biomeswevegone")
     }
 }
 

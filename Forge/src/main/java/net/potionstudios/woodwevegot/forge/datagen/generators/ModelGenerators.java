@@ -39,10 +39,16 @@ public class ModelGenerators {
             WWGWoodSet.getWoodSets().forEach(set -> {
                 try {
                     simpleItemBlockTexture(set.name(), set.ladder());
+                    //withExistingParent(name(set.chest()), mcLoc("item/chest")).texture("particle", woodBlockTexture(set.name(), "planks"));
+                    //withExistingParent(name(set.trappedChest()), mcLoc("item/chest")).texture("particle", woodBlockTexture(set.name(), "planks"));
                 } catch (Exception ignored) {
 
                 }
             });
+        }
+
+        private ResourceLocation woodBlockTexture(String type, String name) {
+            return WoodWeveGot.id(ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name);
         }
 
         private void simpleItemBlockTexture(String set, ItemLike item) {
@@ -103,6 +109,10 @@ public class ModelGenerators {
                     });
                     simpleBlockItem(set.barrel(), modelFile);
                 }
+                simpleBlock(set.chest(), models().sign(name(set.chest()), woodBlockTextureBWG(set.name(), "planks")));
+                itemModels().withExistingParent(name(set.chest()), mcLoc("item/chest")).texture("particle", woodBlockTextureBWG(set.name(), "planks"));
+                itemModels().withExistingParent(name(set.trappedChest()), WoodWeveGot.id("item/" + name(set.chest())));
+                simpleBlock(set.trappedChest(), models().sign(name(set.trappedChest()), woodBlockTextureBWG(set.name(), "planks")));
             });
         }
 
