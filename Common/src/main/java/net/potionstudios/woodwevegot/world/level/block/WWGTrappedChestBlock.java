@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public class WWGTrappedChestBlock extends WWGChestBlock {
 
     protected WWGTrappedChestBlock(String set) {
-        super(WWGBlockEntities.TRAPPED_CHEST::get, set);
+        super(() -> WWGBlockEntities.TRAPPED_CHEST.get(), set);
     }
 
     @Override
