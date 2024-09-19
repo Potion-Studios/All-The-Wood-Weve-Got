@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
 
 import java.util.function.BiConsumer;
 

@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.potionstudios.woodwevegot.world.item.WWGItems;
 import net.potionstudios.woodwevegot.world.level.block.WWGBlocks;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
 import org.slf4j.Logger;
 
 public class WoodWeveGot {

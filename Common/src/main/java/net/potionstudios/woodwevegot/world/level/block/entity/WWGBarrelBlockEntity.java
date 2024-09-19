@@ -1,4 +1,4 @@
-package net.potionstudios.woodwevegot.world.level.block.entities;
+package net.potionstudios.woodwevegot.world.level.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BarrelBlockEntity;

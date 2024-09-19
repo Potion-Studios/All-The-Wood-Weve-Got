@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.potionstudios.woodwevegot.client.WoodWeveGotClient;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGChestBlockEntity;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGTrappedChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlockEntity;
 
 @Environment(EnvType.CLIENT)
 public class WoodWeveGotClientFabric implements ClientModInitializer {

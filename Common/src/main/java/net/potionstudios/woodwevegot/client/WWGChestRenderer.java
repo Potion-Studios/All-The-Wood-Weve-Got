@@ -25,8 +25,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGChestBlock;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGChestBlockEntity;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGTrappedChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)

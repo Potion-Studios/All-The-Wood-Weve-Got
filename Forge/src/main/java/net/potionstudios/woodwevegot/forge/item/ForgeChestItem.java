@@ -10,8 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.potionstudios.woodwevegot.world.level.block.WWGTrappedChestBlock;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGChestBlockEntity;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGTrappedChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGChestBlockEntity;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.potionstudios.woodwevegot.world.level.block.entities.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
