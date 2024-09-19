@@ -9,6 +9,7 @@ version = "${version}"
 displayName = "All the Wood We've Got"
 authors = "Joseph T. McQuigg (JT122406), AOCAWOL"
 description = '''
+Adds wood variants like chests, ladders, and barrels based on BWG wood
 '''
 #logoFile = ""
 
