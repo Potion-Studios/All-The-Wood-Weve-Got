@@ -1,7 +1,6 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWood;

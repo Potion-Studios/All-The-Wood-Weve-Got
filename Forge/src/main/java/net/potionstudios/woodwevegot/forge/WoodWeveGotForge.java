@@ -1,7 +1,6 @@
 package net.potionstudios.woodwevegot.forge;
 
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,7 +16,6 @@ import net.potionstudios.woodwevegot.forge.tabs.WWGCreativeTab;
 public class WoodWeveGotForge {
     public WoodWeveGotForge() {
         IEventBus MOD_BUS = FMLJavaModLoadingContext.get().getModEventBus();
-        IEventBus EVENT_BUS = MinecraftForge.EVENT_BUS;
         WoodWeveGot.init();
         ForgePlatformHandler.register(MOD_BUS);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> WoodWeveGotClientForge.init(MOD_BUS));

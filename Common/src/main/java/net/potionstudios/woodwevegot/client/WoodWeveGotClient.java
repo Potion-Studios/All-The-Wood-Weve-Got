@@ -1,6 +1,5 @@
 package net.potionstudios.woodwevegot.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -9,11 +8,10 @@ import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
 
 import java.util.function.BiConsumer;
 
+/**
+ * Handles the client side of the mod.
+ */
 public class WoodWeveGotClient {
-
-    public static void onInitialize(Minecraft minecraft) {
-
-    }
 
     /**
      * Registers the block key renderers.
@@ -24,5 +22,4 @@ public class WoodWeveGotClient {
         consumer.accept(WWGBlockEntities.CHEST.get(), WWGChestRenderer::new);
         consumer.accept(WWGBlockEntities.TRAPPED_CHEST.get(), WWGChestRenderer::new);
     }
-
 }

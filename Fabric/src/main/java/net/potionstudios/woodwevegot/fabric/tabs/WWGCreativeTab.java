@@ -8,11 +8,7 @@ public class WWGCreativeTab {
 
     public static void addToCreativeTab() {
         // Add items to the creative tab
-        ItemGroupEvents.modifyEntriesEvent(BWGCreativeTabs.WOOD_TAB).register((group) -> {
-            WWGWoodSet.getWoodSets().forEach((wwgWoodSet -> {
-                group.addAfter(wwgWoodSet.getWoodSet().chestBoatItem().get(), wwgWoodSet.ladder(), wwgWoodSet.barrel(), wwgWoodSet.chest(), wwgWoodSet.trappedChest());
-            }));
-        });
+        ItemGroupEvents.modifyEntriesEvent(BWGCreativeTabs.WOOD_TAB).register((group) -> WWGWoodSet.getWoodSets().forEach((wwgWoodSet -> group.addAfter(wwgWoodSet.getWoodSet().chestBoatItem().get(), wwgWoodSet.ladder(), wwgWoodSet.barrel(), wwgWoodSet.chest(), wwgWoodSet.trappedChest()))));
     }
 
 }

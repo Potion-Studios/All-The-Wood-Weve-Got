@@ -18,7 +18,6 @@ import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlo
 public class WoodWeveGotClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        WoodWeveGotClient.onInitialize(Minecraft.getInstance());
         registerRenderTypes();
         WoodWeveGotClient.registerBlockEntityRenderers(BlockEntityRenderers::register);
         registerItemRenderers();
