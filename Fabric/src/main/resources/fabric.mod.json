@@ -29,6 +29,6 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20.1",
-    "biomeswevegone": ">=1.2.3"
+    "biomeswevegone": ">=1.2.4"
   }
 }
