@@ -49,6 +49,7 @@ public class TagsGenerator {
             tag(Tags.Blocks.CHESTS_WOODEN).addTag(WWGBlockTags.CHESTS);
             tag(Tags.Blocks.CHESTS_TRAPPED).addTag(WWGBlockTags.TRAPPED_CHESTS);
             tag(BlockTags.CLIMBABLE).addTag(WWGBlockTags.LADDERS);
+            tag(BlockTags.MINEABLE_WITH_AXE).addTag(WWGBlockTags.BARRELS).addTag(WWGBlockTags.CHESTS).addTag(WWGBlockTags.TRAPPED_CHESTS).addTag(WWGBlockTags.LADDERS);
         }
     }
 
