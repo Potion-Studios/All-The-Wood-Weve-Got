@@ -4,11 +4,14 @@
   "key": {
     "#": {
       "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "biomeswevegone:jacaranda_planks"
     }
   },
   "pattern": [
     "# #",
-    "###",
+    "#P#",
     "# #"
   ],
   "result": {

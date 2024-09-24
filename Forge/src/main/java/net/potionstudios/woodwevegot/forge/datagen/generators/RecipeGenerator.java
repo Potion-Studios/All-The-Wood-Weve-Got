@@ -38,8 +38,9 @@ public class RecipeGenerator extends RecipeProvider {
 
             ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, wwgWoodSet.ladder(), 3)
                     .define('#', Items.STICK)
+                    .define('P', wwgWoodSet.getWoodSet().planks())
                     .pattern("# #")
-                    .pattern("###")
+                    .pattern("#P#")
                     .pattern("# #")
                     .unlockedBy("has_stick", has(Items.STICK))
                     .save(writer);
