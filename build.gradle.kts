@@ -2,7 +2,6 @@ import com.hypherionmc.modpublisher.properties.CurseEnvironment
 import com.hypherionmc.modpublisher.properties.ReleaseType
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.plus
 
 plugins {
     id("architectury-plugin") version "3.4-SNAPSHOT"
