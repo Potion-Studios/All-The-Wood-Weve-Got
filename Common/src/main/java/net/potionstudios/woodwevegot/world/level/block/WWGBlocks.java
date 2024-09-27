@@ -18,27 +18,27 @@ public class WWGBlocks {
     public static ArrayList<Supplier<? extends Item>> BLOCK_ITEMS = new ArrayList<>();
 
 
-    public static <B extends Block> Supplier<B> registerChestBlockItem(String key, Supplier<B> blockSupplier) {
+    protected static <B extends Block> Supplier<B> registerChestBlockItem(String key, Supplier<B> blockSupplier) {
         Supplier<B> block = registerBlock(key, blockSupplier);
         Supplier<Item> item = WWGItems.register(key, PlatformHandler.PLATFORM_HANDLER.createChestBlockItem(block));
         BLOCK_ITEMS.add(item);
         return block;
     }
 
-    public static <B extends Block> Supplier<B> registerBlockItem(String key, Supplier<B> blockSupplier, int burnTime) {
+    protected static <B extends Block> Supplier<B> registerBlockItem(String key, Supplier<B> blockSupplier, int burnTime) {
         Supplier<B> block = registerBlock(key, blockSupplier);
         Supplier<Item> item = WWGItems.register(key, PlatformHandler.PLATFORM_HANDLER.createBlockItem(block, burnTime));
         BLOCK_ITEMS.add(item);
         return block;
     }
 
-    public static <B extends Block> Supplier<B> registerBlock(String id, Supplier<B> block) {
+    protected static <B extends Block> Supplier<B> registerBlock(String id, Supplier<B> block) {
         Supplier<B> blockSupplier = register(id, block);
         BLOCKS.add(blockSupplier);
         return blockSupplier;
     }
 
-    public static <B extends Block> Supplier<B> register(String id, Supplier<B> block) {
+    private static <B extends Block> Supplier<B> register(String id, Supplier<B> block) {
         return PlatformHandler.PLATFORM_HANDLER.register(BuiltInRegistries.BLOCK, id, block);
     }
 
