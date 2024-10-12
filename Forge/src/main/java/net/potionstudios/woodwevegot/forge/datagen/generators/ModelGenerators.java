@@ -30,7 +30,7 @@ public class ModelGenerators {
      */
     private static class ItemModelGenerators extends ItemModelProvider {
 
-        public ItemModelGenerators(PackOutput output, ExistingFileHelper existingFileHelper) {
+        private ItemModelGenerators(PackOutput output, ExistingFileHelper existingFileHelper) {
             super(output, WoodWeveGot.MOD_ID, existingFileHelper);
         }
 
@@ -39,9 +39,7 @@ public class ModelGenerators {
             WWGWoodSet.getWoodSets().forEach(set -> {
                 try {
                     simpleItemBlockTexture(set.name(), set.ladder());
-                } catch (Exception ignored) {
-
-                }
+                } catch (Exception ignored) {}
             });
         }
 
@@ -68,7 +66,7 @@ public class ModelGenerators {
      */
     private static class BlockModelGenerators extends BlockStateProvider {
 
-        public BlockModelGenerators(PackOutput output, ExistingFileHelper exFileHelper) {
+        private BlockModelGenerators(PackOutput output, ExistingFileHelper exFileHelper) {
             super(output, WoodWeveGot.MOD_ID, exFileHelper);
         }
 
@@ -142,6 +140,5 @@ public class ModelGenerators {
         private ResourceLocation key(Block block) {
             return ForgeRegistries.BLOCKS.getKey(block);
         }
-
     }
 }
