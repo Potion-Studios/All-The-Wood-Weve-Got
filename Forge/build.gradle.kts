@@ -25,6 +25,9 @@ configurations {
         isCanBeResolved = true
         isCanBeConsumed = false
     }
+    configureEach {
+        resolutionStrategy.force("net.sf.jopt-simple:jopt-simple:5.0.4")
+    }
 }
 
 loom {
@@ -34,20 +37,10 @@ loom {
         convertAccessWideners.set(true)
         extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
     }
-
-    runs.create("datagen") {
-        data()
-        programArgs("--all", "--mod", "woodwevegot")
-        programArgs("--output", project(":Common").file("src/main/generated/resources").absolutePath)
-        programArgs("--existing", project(":Common").file("src/main/resources").absolutePath)
-        programArgs("--existing-mod", "biomeswevegone")
-    }
 }
 
 dependencies {
-    if ((project.properties["use_neoforge"] as String).toBoolean())
-        forge("net.neoforged:forge:$minecraftVersion-${project.properties["neoforge_version"]}")
-    else forge("net.minecraftforge:forge:$minecraftVersion-${project.properties["forge_version"]}")
+    forge("net.minecraftforge:forge:$minecraftVersion-${project.properties["forge_version"]}")
 
     "common"(project(":Common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":Common", "transformProductionForge"))
@@ -55,8 +48,7 @@ dependencies {
     modLocalRuntime("me.djtheredstoner:DevAuth-forge-latest:${project.properties["devauth_version"]}")
 
     modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Forge:${project.properties["bwg_version"]}") { isTransitive = false }
-    implementation("com.eliotlash.mclib:mclib:20")
-    forgeRuntimeLibrary("com.eliotlash.mclib:mclib:20")
+
     modRuntimeOnly("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-${project.properties["terrablender_version"]}")
     modRuntimeOnly("corgitaco.corgilib:Corgilib-Forge:$minecraftVersion-${project.properties["corgilib_version"]}")
     modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-forge:$minecraftVersion-${project.properties["ohthetreesyoullgrow_version"]}")
@@ -77,7 +69,7 @@ tasks {
     }
 
     shadowJar {
-        exclude("net/potionstudios/woodwevegot/forge/datagen/**", "architectury.common.json")
+        exclude("architectury.common.json", ".cache/**")
         configurations = listOf(project.configurations.getByName("shadowBundle"))
         archiveClassifier.set("dev-shadow")
     }
@@ -89,5 +81,5 @@ tasks {
 }
 
 publisher {
-    setLoaders(ModLoader.FORGE, ModLoader.NEOFORGE)
+    setLoaders(ModLoader.FORGE)
 }

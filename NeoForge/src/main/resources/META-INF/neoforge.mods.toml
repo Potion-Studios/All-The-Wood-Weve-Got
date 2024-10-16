@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/Potion-Studios/All-The-Wood-Weve-Got/issues"
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "woodwevegot"
+version = "${version}"
+displayName = "All the Wood We've Got"
+authors = "Joseph T. McQuigg (JT122406), AOCAWOL"
+description = '''
+Adds wood variants like chests, ladders, and barrels based on BWG wood
+'''
+displayURL="https://potionstudios.net/"
+#logoFile = ""
+
+[[dependencies.woodwevegot]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.woodwevegot]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.woodwevegot]]
+modId = "biomeswevegone"
+type = "required"
+versionRange = "[2.1.5,)"
+ordering = "AFTER"
+side = "BOTH"

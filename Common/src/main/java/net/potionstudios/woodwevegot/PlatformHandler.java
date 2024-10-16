@@ -56,7 +56,7 @@ public interface PlatformHandler {
 	}
 
 	default Supplier<Item> createChestBlockItem(Supplier<? extends Block> block) {
-		return () -> new BlockItem(block.get(), new BlockItem.Properties());
+		return createBlockItem(block, 300);
 	}
 
 	<T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value);

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sakura_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:sakura_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sakura_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:sakura_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:sakura_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sakura_planks",
+      "has_sakura_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:sakura_barrel"
+    ]
+  }
+}

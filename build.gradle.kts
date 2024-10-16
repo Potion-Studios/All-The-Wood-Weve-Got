@@ -49,6 +49,7 @@ subprojects {
             includeGroup("lol.bai")
             includeGroup("mcp.mobius.waila")
         }
+        maven("https://jitpack.io")
     }
 
     @Suppress("UnstableApiUsage")
@@ -56,7 +57,7 @@ subprojects {
         "minecraft"("com.mojang:minecraft:$minecraftVersion")
         "mappings"(loom.layered{
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-$minecraftVersion:${project.properties["parchment"]}@zip")
+            parchment("org.parchmentmc.data:parchment-1.21:${project.properties["parchment"]}@zip")
         })
 
         compileOnly("org.jetbrains:annotations:26.0.1")
@@ -67,12 +68,12 @@ subprojects {
     java {
         withSourcesJar()
 
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     tasks.withType<JavaCompile>().configureEach {
-        options.release.set(17)
+        options.release.set(21)
     }
 
     publishing {
@@ -113,7 +114,7 @@ subprojects {
             setReleaseType(ReleaseType.ALPHA)
             setGameVersions(minecraftVersion)
             setCurseEnvironment(CurseEnvironment.BOTH)
-            setJavaVersions(JavaVersion.VERSION_17, JavaVersion.VERSION_18, JavaVersion.VERSION_19, JavaVersion.VERSION_20, JavaVersion.VERSION_21, JavaVersion.VERSION_22)
+            setJavaVersions(JavaVersion.VERSION_21, JavaVersion.VERSION_22)
             val softDepends = mutableListOf("oh-the-biomes-weve-gone")
             curseDepends.required.set(softDepends)
             modrinthDepends.required.set(softDepends)

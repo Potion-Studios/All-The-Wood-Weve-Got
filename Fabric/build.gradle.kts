@@ -29,8 +29,6 @@ configurations {
 
 loom.accessWidenerPath.set(project(":Common").loom.accessWidenerPath)
 
-fabricApi.configureDataGeneration()
-
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.properties["fabric_loader_version"]}")
     modApi("net.fabricmc.fabric-api:fabric-api:${project.properties["fabric_api_version"]}+$minecraftVersion")
@@ -61,7 +59,7 @@ tasks {
     }
 
     shadowJar {
-        exclude("net/potionstudios/woodwevegot/fabric/datagen/**", "architectury.common.json")
+        exclude("architectury.common.json", ".cache/**")
         configurations = listOf(project.configurations.getByName("shadowBundle"))
         archiveClassifier.set("dev-shadow")
     }

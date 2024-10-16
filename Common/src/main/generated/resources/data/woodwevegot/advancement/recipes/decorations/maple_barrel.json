@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_maple_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:maple_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_maple_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:maple_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:maple_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_maple_planks",
+      "has_maple_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:maple_barrel"
+    ]
+  }
+}

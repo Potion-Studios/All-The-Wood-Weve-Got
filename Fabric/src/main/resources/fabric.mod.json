@@ -21,14 +21,11 @@
     ],
     "client": [
       "net.potionstudios.woodwevegot.fabric.client.WoodWeveGotClientFabric"
-    ],
-    "fabric-datagen": [
-      "net.potionstudios.woodwevegot.fabric.datagen.FabricDatagen"
     ]
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.1",
-    "biomeswevegone": ">=1.2.4"
+    "minecraft": ">=1.21.1",
+    "biomeswevegone": ">=2.1.5"
   }
 }

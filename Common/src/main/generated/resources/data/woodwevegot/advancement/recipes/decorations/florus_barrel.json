@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_florus_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:florus_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_florus_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "biomeswevegone:florus_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodwevegot:florus_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_florus_planks",
+      "has_florus_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodwevegot:florus_barrel"
+    ]
+  }
+}
