@@ -59,7 +59,7 @@ tasks {
     }
 
     shadowJar {
-        exclude("architectury.common.json", ".cache/**")
+        exclude("architectury.common.json", ".cache/**", "data/woodwevegot/neoforge/**")
         configurations = listOf(project.configurations.getByName("shadowBundle"))
         archiveClassifier.set("dev-shadow")
     }

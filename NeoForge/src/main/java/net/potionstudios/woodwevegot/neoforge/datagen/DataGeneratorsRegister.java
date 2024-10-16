@@ -9,10 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.potionstudios.woodwevegot.WoodWeveGot;
-import net.potionstudios.woodwevegot.neoforge.datagen.generators.LangGenerator;
-import net.potionstudios.woodwevegot.neoforge.datagen.generators.ModelGenerators;
-import net.potionstudios.woodwevegot.neoforge.datagen.generators.RecipeGenerator;
-import net.potionstudios.woodwevegot.neoforge.datagen.generators.TagsGenerator;
+import net.potionstudios.woodwevegot.neoforge.datagen.generators.*;
 import net.potionstudios.woodwevegot.neoforge.datagen.generators.loot.LootGenerator;
 
 import java.util.concurrent.CompletableFuture;
@@ -37,5 +34,6 @@ class DataGeneratorsRegister {
 		generator.addProvider(event.includeClient(), new LangGenerator(output, "en_us"));
 		TagsGenerator.init(generator, event.includeServer(), output, lookupProvider, existingFileHelper);
 		generator.addProvider(event.includeServer(), new LootGenerator(output, lookupProvider));
+		generator.addProvider(event.includeServer(), new DatamapGenerator(output, lookupProvider));
 	}
 }

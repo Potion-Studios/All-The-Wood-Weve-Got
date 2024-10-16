@@ -1,0 +1,16 @@
+{
+  "values": {
+    "#woodwevegot:barrels": {
+      "burn_time": 300
+    },
+    "#woodwevegot:chests": {
+      "burn_time": 300
+    },
+    "#woodwevegot:ladders": {
+      "burn_time": 300
+    },
+    "#woodwevegot:trapped_chests": {
+      "burn_time": 300
+    }
+  }
+}
