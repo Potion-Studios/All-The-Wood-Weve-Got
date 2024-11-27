@@ -1,7 +1,7 @@
 # 1.0.2
 - Add German Translations (Credits: ieguana)
 - Add Russian Translations (Credits: j-tap)
-
+- Add Spanish (Chile) Translations (es_cl) (Credits: Ganbare-Lucifer)
 
 # 1.0.1
 - Add Simplified Chinese Translations (Credits: Crown-Fairy)
