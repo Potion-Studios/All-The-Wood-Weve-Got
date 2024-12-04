@@ -1,3 +1,6 @@
+# 1.0.3
+- Refactor ChestRenderer into render\blockentity package
+
 # 1.0.2
 - Add German Translations (de_de) (Credits: ieguana)
 - Add Russian Translations (ru_ru) (Credits: j-tap)
