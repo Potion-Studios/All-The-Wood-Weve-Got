@@ -23,8 +23,6 @@ import net.potionstudios.woodwevegot.world.level.block.entity.WWGChestBlockEntit
 import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Consumer;
-
 @Mod(value = WoodWeveGot.MOD_ID, dist = Dist.CLIENT)
 public class WoodWeveGotClientNeoForge {
 
@@ -32,8 +30,8 @@ public class WoodWeveGotClientNeoForge {
      * Constructor for the client side of the NeoForge mod.
      * @param eventBus The event bus to register the client side of the mod to.
      */
-    public WoodWeveGotClientNeoForge(IEventBus eventBus) {
-        eventBus.addListener((Consumer<EntityRenderersEvent.RegisterRenderers>) event -> WoodWeveGotClient.registerBlockEntityRenderers(event::registerBlockEntityRenderer));
+    public WoodWeveGotClientNeoForge(final IEventBus eventBus) {
+        eventBus.addListener((EntityRenderersEvent.RegisterRenderers event) -> WoodWeveGotClient.registerBlockEntityRenderers(event::registerBlockEntityRenderer));
         eventBus.addListener(WoodWeveGotClientNeoForge::registerClientExtensions);
     }
 
