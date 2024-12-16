@@ -1,5 +1,6 @@
-# 1.0.3
+# 1.1.0
 - Refactor ChestRenderer into render\blockentity package
+- Remove Consumer Use in Forge Client
 
 # 1.0.2
 - Add German Translations (de_de) (Credits: ieguana)
