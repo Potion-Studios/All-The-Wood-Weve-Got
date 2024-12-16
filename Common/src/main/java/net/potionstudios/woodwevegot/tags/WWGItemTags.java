@@ -15,5 +15,4 @@ public class WWGItemTags {
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, WoodWeveGot.id(name));
     }
-
 }

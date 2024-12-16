@@ -26,7 +26,7 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 
 	private static class FabricBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 
-		public FabricBlockTagGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+		private FabricBlockTagGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 			super(output, registriesFuture);
 		}
 
@@ -39,7 +39,7 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 
 	private static class FabricItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
-		public FabricItemTagGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, FabricTagProvider.BlockTagProvider blockTags) {
+		private FabricItemTagGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, FabricTagProvider.BlockTagProvider blockTags) {
 			super(output, registriesFuture, blockTags);
 		}
 
@@ -50,5 +50,3 @@ public class FabricDatagen implements DataGeneratorEntrypoint {
 		}
 	}
 }
-
-
