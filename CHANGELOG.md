@@ -1,4 +1,5 @@
 # 2.2.0
+- Fix Line in the middle of Double Chests Textures
 
 # 2.1.0
 - Refactor ChestRenderer into render\blockentity package
