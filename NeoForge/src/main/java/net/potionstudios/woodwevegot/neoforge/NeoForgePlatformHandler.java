@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 @AutoService(PlatformHandler.class)
-public class NeoForgePlatformHandler implements PlatformHandler {
+public final class NeoForgePlatformHandler implements PlatformHandler {
 	@Override
 	public Platform getPlatform() {
 		return Platform.FORGE;
@@ -40,7 +40,7 @@ public class NeoForgePlatformHandler implements PlatformHandler {
 		return BLOCK_ENTITIES.register(key, () -> builder.get().build(Util.fetchChoiceType(References.BLOCK_ENTITY, key)));
 	}
 
-	public static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();
+	private static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();
 
 	@Override
 	public <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
@@ -53,7 +53,7 @@ public class NeoForgePlatformHandler implements PlatformHandler {
 		return () -> (Holder.Reference<T>) registryObject.getDelegate();
 	}
 
-	public static void register(IEventBus bus) {
+	public static void register(final IEventBus bus) {
 		CACHED.values().forEach(deferredRegister -> deferredRegister.register(bus));
 		BLOCK_ENTITIES.register(bus);
 	}
