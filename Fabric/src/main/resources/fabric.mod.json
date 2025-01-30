@@ -14,7 +14,7 @@
     "issues": "https://github.com/Potion-Studios/All-The-Wood-Weve-Got/issues"
   },
   "license": "All Rights Reserved",
-  "icon": "WWG.png",
+  "icon": "small_icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -28,5 +28,12 @@
     "fabric": "*",
     "minecraft": ">=1.21.1",
     "biomeswevegone": ">=2.2.3"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.com/invite/vP3PBGvgdW"
+      }
+    }
   }
 }
