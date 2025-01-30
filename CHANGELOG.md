@@ -1,5 +1,6 @@
 # 1.2.0
 - Fix Line in the middle of Double Chests Textures
+- Add ModMenu Support (Fabric)
 
 # 1.1.0
 - Refactor ChestRenderer into render\blockentity package
