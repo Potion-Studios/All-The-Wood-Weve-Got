@@ -5,7 +5,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 
-public class WWGItemTags {
+public final class WWGItemTags {
 
     public static final TagKey<Item> BARRELS = create("barrels");
     public static final TagKey<Item> LADDERS = create("ladders");
@@ -15,5 +15,4 @@ public class WWGItemTags {
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, WoodWeveGot.id(name));
     }
-
 }
