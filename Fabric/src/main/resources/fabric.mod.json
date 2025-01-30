@@ -10,7 +10,8 @@
   ],
   "contact": {
     "homepage": "https://potionstudios.net/",
-    "sources": "https://github.com/Potion-Studios/All-The-Wood-Weve-Got"
+    "sources": "https://github.com/Potion-Studios/All-The-Wood-Weve-Got",
+    "issues": "https://github.com/Potion-Studios/All-The-Wood-Weve-Got/issues"
   },
   "license": "All Rights Reserved",
   "icon": "WWG.png",
