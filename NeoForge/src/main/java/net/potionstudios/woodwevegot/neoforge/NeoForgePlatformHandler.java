@@ -23,10 +23,6 @@ import java.util.function.Supplier;
 
 @AutoService(PlatformHandler.class)
 public final class NeoForgePlatformHandler implements PlatformHandler {
-	@Override
-	public Platform getPlatform() {
-		return Platform.FORGE;
-	}
 
 	@Override
 	public Path configPath() {

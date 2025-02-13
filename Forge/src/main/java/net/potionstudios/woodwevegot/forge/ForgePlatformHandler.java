@@ -28,12 +28,8 @@ import java.util.function.Supplier;
 
 @AutoService(PlatformHandler.class)
 public final class ForgePlatformHandler implements PlatformHandler {
-	@Override
-	public Platform getPlatform() {
-		return Platform.FORGE;
-	}
 
-	@Override
+    @Override
 	public Path configPath() {
 		return FMLPaths.CONFIGDIR.get().resolve(WoodWeveGot.MOD_ID);
 	}
