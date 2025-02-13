@@ -1,6 +1,7 @@
 # 1.2.0
 - Fix Line in the middle of Double Chests Textures
 - Add ModMenu Support (Fabric)
+- Fix Barrels Missing 90 Rotation in North Direction
 
 # 1.1.0
 - Refactor ChestRenderer into render\blockentity package
