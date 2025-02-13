@@ -1,5 +1,5 @@
 # 2.2.0
-- Fix Line in the middle of Double Chests Textures
+- Fix Line in the top middle of Double Chests Textures
 - Add ModMenu Support (Fabric)
 - Fix Barrels Missing 90 Rotation in North Direction
 
