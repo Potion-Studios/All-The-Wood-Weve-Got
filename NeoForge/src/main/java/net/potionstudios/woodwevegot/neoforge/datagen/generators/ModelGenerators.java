@@ -59,6 +59,7 @@ public class ModelGenerators {
                             current = open;
                         return switch (blockState.getValue(BarrelBlock.FACING)) {
                             case DOWN -> ConfiguredModel.builder().modelFile(current).rotationX(180).build();
+                            case NORTH -> ConfiguredModel.builder().modelFile(current).rotationX(90).build();
                             case EAST -> ConfiguredModel.builder().modelFile(current).rotationY(90).rotationX(90).build();
                             case SOUTH -> ConfiguredModel.builder().modelFile(current).rotationX(90).rotationY(180).build();
                             case WEST -> ConfiguredModel.builder().modelFile(current).rotationY(270).rotationX(90).build();
