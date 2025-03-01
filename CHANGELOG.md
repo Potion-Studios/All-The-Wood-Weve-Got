@@ -1,3 +1,5 @@
+# 1.2.1
+
 # 1.2.0
 - Fix Line in the middle of Double Chests Textures
 - Add ModMenu Support (Fabric)
