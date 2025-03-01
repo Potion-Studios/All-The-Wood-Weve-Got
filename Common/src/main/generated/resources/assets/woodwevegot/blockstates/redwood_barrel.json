@@ -19,11 +19,11 @@
       "y": 90
     },
     "facing=north,open=false": {
-      "model": "woodwevegot:block/redwood_barrel"
+      "model": "woodwevegot:block/redwood_barrel",
       "x": 90
     },
     "facing=north,open=true": {
-      "model": "woodwevegot:block/redwood_barrel_open"
+      "model": "woodwevegot:block/redwood_barrel_open",
       "x": 90
     },
     "facing=south,open=false": {
