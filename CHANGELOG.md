@@ -1,4 +1,5 @@
 # 1.2.1
+- Fix error in barrel models causing them to not render correctly
 
 # 1.2.0
 - Fix Line in the middle of Double Chests Textures
