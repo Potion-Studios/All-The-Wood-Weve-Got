@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:holly_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:holly_slab"
-    }
+    "P": "biomeswevegone:holly_planks",
+    "S": "biomeswevegone:holly_slab"
   },
   "pattern": [
     "PSP",

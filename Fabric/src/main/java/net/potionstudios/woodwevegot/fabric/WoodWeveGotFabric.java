@@ -1,7 +1,7 @@
 package net.potionstudios.woodwevegot.fabric;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.potionstudios.biomeswevegone.fabric.BiomesWeveGoneFabric;
 import net.potionstudios.biomeswevegone.world.item.BWGCreativeTabs;
 import net.potionstudios.woodwevegot.WoodWeveGot;
@@ -24,10 +24,10 @@ public class WoodWeveGotFabric implements ModInitializer {
     }
 
     private static void registerFuels() {
-        FuelRegistry.INSTANCE.add(WWGItemTags.BARRELS, 300);
-        FuelRegistry.INSTANCE.add(WWGItemTags.LADDERS, 300);
-        FuelRegistry.INSTANCE.add(WWGItemTags.CHESTS, 300);
-        FuelRegistry.INSTANCE.add(WWGItemTags.TRAPPED_CHESTS, 300);
+        FuelRegistryEvents.BUILD.register(((builder, context) -> builder.add(WWGItemTags.BARRELS, 300)));
+        FuelRegistryEvents.BUILD.register(((builder, context) -> builder.add(WWGItemTags.LADDERS, 300)));
+        FuelRegistryEvents.BUILD.register(((builder, context) -> builder.add(WWGItemTags.CHESTS, 300)));
+        FuelRegistryEvents.BUILD.register(((builder, context) -> builder.add(WWGItemTags.TRAPPED_CHESTS, 300)));
     }
 
 }

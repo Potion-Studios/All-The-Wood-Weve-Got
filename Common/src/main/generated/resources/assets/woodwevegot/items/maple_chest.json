@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/maple_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:maple/normal"
+    }
+  }
+}

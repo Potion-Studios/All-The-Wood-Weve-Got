@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "P": {
-      "item": "biomeswevegone:green_enchanted_planks"
-    }
+    "#": "minecraft:stick",
+    "P": "biomeswevegone:green_enchanted_planks"
   },
   "pattern": [
     "# #",

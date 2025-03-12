@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/skyris_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/skyris/planks"
+  }
 }

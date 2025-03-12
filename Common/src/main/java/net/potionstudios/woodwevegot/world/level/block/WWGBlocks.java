@@ -1,6 +1,8 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWood;
@@ -15,16 +17,9 @@ public class WWGBlocks {
 
     public static final ArrayList<Supplier<? extends Block>> BLOCKS = new ArrayList<>();
 
-
-    protected static <B extends Block> Supplier<B> registerChestBlockItem(String key, Supplier<B> blockSupplier) {
-        Supplier<B> block = registerBlock(key, blockSupplier);
-        registerItem(key, PlatformHandler.PLATFORM_HANDLER.createChestBlockItem(block));
-        return block;
-    }
-
     protected static <B extends Block> Supplier<B> registerBlockItem(String key, Supplier<B> blockSupplier, int burnTime) {
         Supplier<B> block = registerBlock(key, blockSupplier);
-        registerItem(key, PlatformHandler.PLATFORM_HANDLER.createBlockItem(block, burnTime));
+        registerItem(key, PlatformHandler.PLATFORM_HANDLER.createBlockItem(block, new Item.Properties().useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, WoodWeveGot.id(key))), burnTime));
         return block;
     }
 

@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/ebony_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:ebony/normal"
+    }
+  }
+}

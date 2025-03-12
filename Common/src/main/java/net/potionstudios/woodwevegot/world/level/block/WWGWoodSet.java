@@ -1,8 +1,11 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
+import net.potionstudios.woodwevegot.WoodWeveGot;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -19,10 +22,10 @@ public class WWGWoodSet {
 
 	public WWGWoodSet(Supplier<BWGWoodSet> woodSet) {
 		this.woodSet = woodSet;
-		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", WWGBarrelBlock::new, 300);
-		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER)), 300);
-		this.chest = WWGBlocks.registerChestBlockItem(woodSet.get().name() + "_chest", () -> new WWGChestBlock(woodSet.get().name()));
-		this.trappedChest = WWGBlocks.registerChestBlockItem(woodSet.get().name() + "_trapped_chest", () -> new WWGTrappedChestBlock(woodSet.get().name()));
+		this.barrel = WWGBlocks.registerBlockItem(woodSet.get().name() + "_barrel", () -> new WWGBarrelBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).setId(key(woodSet.get().name() + "_barrel"))), 300);
+		this.ladder = WWGBlocks.registerBlockItem(woodSet.get().name() + "_ladder", () -> new LadderBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER).setId(key(woodSet.get().name() + "_ladder"))), 300);
+		this.chest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_chest", () -> new WWGChestBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHEST).setId(key(woodSet.get().name() + "_chest")), woodSet.get().name()), 300);
+		this.trappedChest = WWGBlocks.registerBlockItem(woodSet.get().name() + "_trapped_chest", () -> new WWGTrappedChestBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TRAPPED_CHEST).setId(key(woodSet.get().name() + "_trapped_chest")), woodSet.get().name()), 300);
 		woodSets.add(this);
 	}
 
@@ -52,5 +55,9 @@ public class WWGWoodSet {
 
 	public static ArrayList<WWGWoodSet> getWoodSets() {
 		return woodSets;
+	}
+
+	private static ResourceKey<Block> key(String name) {
+		return ResourceKey.create(Registries.BLOCK, WoodWeveGot.id(name));
 	}
 }

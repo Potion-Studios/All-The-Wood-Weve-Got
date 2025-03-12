@@ -1,11 +1,11 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
 import org.jetbrains.annotations.NotNull;
@@ -16,12 +16,12 @@ public class WWGChestBlock extends ChestBlock {
 
 	private final String set;
 
-	protected WWGChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, String set) {
-		super(Properties.ofFullCopy(Blocks.CHEST), blockEntityType);
+	protected WWGChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, BlockBehaviour.Properties properties, String set) {
+		super(blockEntityType, properties);
 		this.set = set;
 	}
-	protected WWGChestBlock(String set) {
-		this(() -> WWGBlockEntities.CHEST.get(), set);
+	protected WWGChestBlock(BlockBehaviour.Properties properties, String set) {
+		this(() -> WWGBlockEntities.CHEST.get(), properties, set);
 	}
 
 	public String getSet() {

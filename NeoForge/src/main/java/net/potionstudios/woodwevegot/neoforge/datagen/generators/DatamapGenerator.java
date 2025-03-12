@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import net.potionstudios.woodwevegot.tags.WWGItemTags;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +22,7 @@ public class DatamapGenerator extends DataMapProvider {
 	}
 
 	@Override
-	protected void gather() {
+	protected void gather(HolderLookup.@NotNull Provider arg) {
 		builder(NeoForgeDataMaps.FURNACE_FUELS)
 				.add(WWGItemTags.BARRELS, new FurnaceFuel(300), false)
 				.add(WWGItemTags.LADDERS, new FurnaceFuel(300), false)

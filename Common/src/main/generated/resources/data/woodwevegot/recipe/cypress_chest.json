@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "biomeswevegone:cypress_planks"
-    }
+    "#": "biomeswevegone:cypress_planks"
   },
   "pattern": [
     "###",

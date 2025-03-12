@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "biomeswevegone:witch_hazel_planks"
-    }
+    "#": "biomeswevegone:witch_hazel_planks"
   },
   "pattern": [
     "###",

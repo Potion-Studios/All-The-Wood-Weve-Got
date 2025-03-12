@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "P": {
-      "item": "biomeswevegone:cika_planks"
-    }
+    "#": "minecraft:stick",
+    "P": "biomeswevegone:cika_planks"
   },
   "pattern": [
     "# #",

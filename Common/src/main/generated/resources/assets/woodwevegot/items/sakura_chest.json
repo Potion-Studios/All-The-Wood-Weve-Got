@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/sakura_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:sakura/normal"
+    }
+  }
+}

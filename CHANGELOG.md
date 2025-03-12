@@ -1,3 +1,6 @@
+# 3.0.0
+- Update to 1.21.4
+
 # 2.2.1
 - Fix error in barrel models causing them to not render correctly
 

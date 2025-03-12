@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/rainbow_eucalyptus_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/rainbow_eucalyptus/planks"
+  }
 }

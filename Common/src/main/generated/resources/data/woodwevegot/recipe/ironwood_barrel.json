@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:ironwood_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:ironwood_slab"
-    }
+    "P": "biomeswevegone:ironwood_planks",
+    "S": "biomeswevegone:ironwood_slab"
   },
   "pattern": [
     "PSP",

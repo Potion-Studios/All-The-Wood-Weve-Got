@@ -1,98 +1,95 @@
 package net.potionstudios.woodwevegot.neoforge.datagen.generators;
 
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.blockstates.Variant;
+import net.minecraft.client.data.models.blockstates.VariantProperties;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.special.ChestSpecialRenderer;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.world.level.block.BarrelBlock;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LadderBlock;
-import net.neoforged.neoforge.client.model.generators.*;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.potionstudios.biomeswevegone.BiomesWeveGone;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
+import org.jetbrains.annotations.NotNull;
 
-public class ModelGenerators {
+import java.util.Optional;
 
-    public static void init(DataGenerator generator, boolean run, PackOutput output, ExistingFileHelper exFileHelper) {
-        generator.addProvider(run, new BlockModelGenerators(output, exFileHelper));
+public class ModelGenerators extends ModelProvider {
+    public ModelGenerators(PackOutput arg) {
+        super(arg, WoodWeveGot.MOD_ID);
     }
 
-    /**
-     * Used to generate models for blocks.
-     * @see BlockStateProvider
-     */
-    private static class BlockModelGenerators extends BlockStateProvider {
+    @Override
+    protected void registerModels(@NotNull BlockModelGenerators blockModels, @NotNull ItemModelGenerators itemModels) {
+        WWGWoodSet.getWoodSets().forEach(wwgWoodSet -> {
+            createChest(blockModels, itemModels, wwgWoodSet.chest(), wwgWoodSet.name(), "normal");
+            createChest(blockModels, itemModels, wwgWoodSet.trappedChest(), wwgWoodSet.name(), "trapped");
+            createBarrel(blockModels, wwgWoodSet.barrel(), wwgWoodSet.name());
+            createLadder(blockModels, wwgWoodSet.ladder(), wwgWoodSet.name());
+        });
+    }
 
-        private BlockModelGenerators(PackOutput output, ExistingFileHelper exFileHelper) {
-            super(output, WoodWeveGot.MOD_ID, exFileHelper);
-        }
+    private void createChest(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block chestBlock, String set, String chestType) {
+        ResourceLocation planks = BiomesWeveGone.id("block/" + set + "/planks");
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(chestBlock, ModelTemplates.PARTICLE_ONLY.create(chestBlock, new TextureMapping().put(TextureSlot.PARTICLE, planks), blockModels.modelOutput)));
+        Item item = chestBlock.asItem();
+        ResourceLocation resourcelocation = ModelTemplates.CHEST_INVENTORY.create(item, TextureMapping.particle(planks), blockModels.modelOutput);
+        ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.specialModel(resourcelocation, new ChestSpecialRenderer.Unbaked(WoodWeveGot.id(set + "/" + chestType)));
+        itemModels.itemModelOutput.accept(item, itemmodel$unbaked);
+    }
 
-        @Override
-        protected void registerStatesAndModels() {
-            WWGWoodSet.getWoodSets().forEach(set -> {
-                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.name(), "ladder"), PackType.CLIENT_RESOURCES)) {
-                    ModelFile modelFile = models().withExistingParent(name(set.ladder()), "ladder")
-                            .texture("texture", woodBlockTexture(set.name(), "ladder"))
-                            .texture("particle", woodBlockTexture(set.name(), "ladder"))
-                            .renderType("cutout");
-                    getVariantBuilder(set.ladder()).forAllStatesExcept(blockState -> {
-                        if (blockState.getValue(LadderBlock.FACING) == Direction.EAST)
-                            return ConfiguredModel.builder().modelFile(modelFile).rotationY(90).build();
-                        else if (blockState.getValue(LadderBlock.FACING) == Direction.SOUTH)
-                            return ConfiguredModel.builder().modelFile(modelFile).rotationY(180).build();
-                        else if (blockState.getValue(LadderBlock.FACING) == Direction.WEST)
-                            return ConfiguredModel.builder().modelFile(modelFile).rotationY(270).build();
-                        else return ConfiguredModel.builder().modelFile(modelFile).build();
-                    }, LadderBlock.WATERLOGGED);
-                    itemModels().singleTexture(name(set.ladder()), mcLoc("item/generated"), "layer0", woodBlockTexture(set.name(), "ladder"));
-                }
-                if (models().existingFileHelper.exists(woodBlockTextureFolder(set.name(), "barrel_top"), PackType.CLIENT_RESOURCES)) {
-                    ModelFile modelFile = models().cubeBottomTop(name(set.barrel()), woodBlockTexture(set.name(), "barrel_side"), woodBlockTexture(set.name(), "barrel_bottom"), woodBlockTexture(set.name(), "barrel_top"));
-                    ModelFile open =  models().cubeBottomTop(name(set.barrel()) + "_open", woodBlockTexture(set.name(), "barrel_side"), woodBlockTexture(set.name(), "barrel_bottom"), woodBlockTexture(set.name(), "barrel_top_open"));
-                    getVariantBuilder(set.barrel()).forAllStates(blockState -> {
-                        ModelFile current = modelFile;
-                        if (blockState.getValue(BarrelBlock.OPEN))
-                            current = open;
-                        return switch (blockState.getValue(BarrelBlock.FACING)) {
-                            case DOWN -> ConfiguredModel.builder().modelFile(current).rotationX(180).build();
-                            case NORTH -> ConfiguredModel.builder().modelFile(current).rotationX(90).build();
-                            case EAST -> ConfiguredModel.builder().modelFile(current).rotationY(90).rotationX(90).build();
-                            case SOUTH -> ConfiguredModel.builder().modelFile(current).rotationX(90).rotationY(180).build();
-                            case WEST -> ConfiguredModel.builder().modelFile(current).rotationY(270).rotationX(90).build();
-                            default -> ConfiguredModel.builder().modelFile(current).build();
-                        };
-                    });
-                    simpleBlockItem(set.barrel(), modelFile);
-                }
-                simpleBlock(set.chest(), models().sign(name(set.chest()), woodBlockTextureBWG(set.name(), "planks")));
-                itemModels().withExistingParent(name(set.chest()), mcLoc("item/chest")).texture("particle", woodBlockTextureBWG(set.name(), "planks"));
-                itemModels().withExistingParent(name(set.trappedChest()), WoodWeveGot.id("item/" + name(set.chest())));
-                simpleBlock(set.trappedChest(), models().sign(name(set.trappedChest()), woodBlockTextureBWG(set.name(), "planks")));
-            });
-        }
+    private void createLadder(BlockModelGenerators blockModels, Block horizontalBlock, String set) {
+        ResourceLocation model = new ModelTemplate(Optional.of(mcLocation("block/ladder")), Optional.empty()).extend().renderType(mcLocation("cutout")).build()
+                .create(horizontalBlock, new TextureMapping().putForced(TextureSlot.PARTICLE, WoodWeveGot.id("block/" + set + "/ladder")).putForced(TextureSlot.TEXTURE, WoodWeveGot.id("block/" + set + "/ladder")), blockModels.modelOutput);
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(horizontalBlock, Variant.variant().with(VariantProperties.MODEL, model))
+                                .with(BlockModelGenerators.createHorizontalFacingDispatch())
+                );
+        blockModels.itemModelOutput.accept(horizontalBlock.asItem(), ItemModelUtils.plainModel(ModelTemplates.FLAT_ITEM.create(horizontalBlock.asItem(), TextureMapping.layer0(WoodWeveGot.id("block/" + set + "/ladder")), blockModels.modelOutput)));
+    }
 
-        private ResourceLocation woodBlockTexture(String type, String name) {
-            return WoodWeveGot.id(ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name);
-        }
-
-        private ResourceLocation woodBlockTextureBWG(String type, String name) {
-            return BiomesWeveGone.id(ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name);
-        }
-
-        private ResourceLocation woodBlockTextureFolder(String type, String name) {
-            return WoodWeveGot.id("textures/" + ModelProvider.BLOCK_FOLDER + "/" + type + "/" + name + ".png");
-        }
-
-        private String name(Block block) {
-            return key(block).getPath();
-        }
-
-        private ResourceLocation key(Block block) {
-            return BuiltInRegistries.BLOCK.getKey(block);
-        }
+    private void createBarrel(BlockModelGenerators blockModels, Block barrel, String set) {
+        ResourceLocation resourceLocation = WoodWeveGot.id("block/" + set + "/barrel_top_open");
+        ResourceLocation resourceLocation1 = WoodWeveGot.id("block/" + set + "/barrel_bottom");
+        ResourceLocation resourceLocation2 = WoodWeveGot.id("block/" + set + "/barrel_side");
+        ResourceLocation resourceLocation3 = WoodWeveGot.id("block/" + set + "/barrel_top");
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(barrel)
+                                .with(blockModels.createColumnWithFacing())
+                                .with(
+                                        PropertyDispatch.property(BlockStateProperties.OPEN)
+                                                .select(false, Variant.variant().with(VariantProperties.MODEL, TexturedModel.CUBE_TOP_BOTTOM.updateTexture(textureMapping -> {
+                                                    textureMapping.put(TextureSlot.TOP, resourceLocation3);
+                                                    textureMapping.put(TextureSlot.BOTTOM, resourceLocation1);
+                                                    textureMapping.put(TextureSlot.SIDE, resourceLocation2);
+                                                }).create(barrel, blockModels.modelOutput)))
+                                                .select(
+                                                        true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        TexturedModel.CUBE_TOP_BOTTOM
+                                                                                .get(barrel)
+                                                                                .updateTextures(textureMapping -> {
+                                                                                    textureMapping.put(TextureSlot.TOP, resourceLocation);
+                                                                                    textureMapping.put(TextureSlot.BOTTOM, resourceLocation1);
+                                                                                    textureMapping.put(TextureSlot.SIDE, resourceLocation2);
+                                                                                })
+                                                                                .createWithSuffix(barrel, "_open", blockModels.modelOutput)
+                                                                )
+                                                )
+                                )
+                );
     }
 }

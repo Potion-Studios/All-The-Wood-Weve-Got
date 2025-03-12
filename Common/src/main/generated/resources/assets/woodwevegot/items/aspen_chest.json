@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/aspen_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:aspen/normal"
+    }
+  }
+}

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "biomeswevegone:jacaranda_planks"
-    }
+    "#": "biomeswevegone:jacaranda_planks"
   },
   "pattern": [
     "###",

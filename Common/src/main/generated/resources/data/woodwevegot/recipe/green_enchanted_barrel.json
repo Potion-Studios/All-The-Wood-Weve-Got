@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:green_enchanted_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:green_enchanted_slab"
-    }
+    "P": "biomeswevegone:green_enchanted_planks",
+    "S": "biomeswevegone:green_enchanted_slab"
   },
   "pattern": [
     "PSP",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:rainbow_eucalyptus_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:rainbow_eucalyptus_slab"
-    }
+    "P": "biomeswevegone:rainbow_eucalyptus_planks",
+    "S": "biomeswevegone:rainbow_eucalyptus_slab"
   },
   "pattern": [
     "PSP",

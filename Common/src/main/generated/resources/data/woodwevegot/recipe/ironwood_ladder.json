@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "P": {
-      "item": "biomeswevegone:ironwood_planks"
-    }
+    "#": "minecraft:stick",
+    "P": "biomeswevegone:ironwood_planks"
   },
   "pattern": [
     "# #",

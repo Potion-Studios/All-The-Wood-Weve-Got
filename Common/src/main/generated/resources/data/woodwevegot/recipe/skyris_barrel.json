@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:skyris_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:skyris_slab"
-    }
+    "P": "biomeswevegone:skyris_planks",
+    "S": "biomeswevegone:skyris_slab"
   },
   "pattern": [
     "PSP",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:willow_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:willow_slab"
-    }
+    "P": "biomeswevegone:willow_planks",
+    "S": "biomeswevegone:willow_slab"
   },
   "pattern": [
     "PSP",

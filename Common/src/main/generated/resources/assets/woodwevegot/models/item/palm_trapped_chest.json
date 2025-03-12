@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/palm_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/palm/planks"
+  }
 }

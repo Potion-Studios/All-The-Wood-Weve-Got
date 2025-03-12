@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:zelkova_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:zelkova_slab"
-    }
+    "P": "biomeswevegone:zelkova_planks",
+    "S": "biomeswevegone:zelkova_slab"
   },
   "pattern": [
     "PSP",

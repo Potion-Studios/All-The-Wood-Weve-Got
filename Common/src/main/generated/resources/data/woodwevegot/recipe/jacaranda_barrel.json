@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:jacaranda_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:jacaranda_slab"
-    }
+    "P": "biomeswevegone:jacaranda_planks",
+    "S": "biomeswevegone:jacaranda_slab"
   },
   "pattern": [
     "PSP",

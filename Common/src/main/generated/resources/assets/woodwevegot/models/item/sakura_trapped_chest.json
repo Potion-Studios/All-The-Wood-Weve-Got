@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/sakura_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/sakura/planks"
+  }
 }

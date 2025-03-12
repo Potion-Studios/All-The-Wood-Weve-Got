@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:aspen_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:aspen_slab"
-    }
+    "P": "biomeswevegone:aspen_planks",
+    "S": "biomeswevegone:aspen_slab"
   },
   "pattern": [
     "PSP",

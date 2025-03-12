@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/jacaranda_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/jacaranda/planks"
+  }
 }

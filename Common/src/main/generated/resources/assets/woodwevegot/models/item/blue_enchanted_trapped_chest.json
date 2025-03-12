@@ -1,3 +1,6 @@
 {
-  "parent": "woodwevegot:item/blue_enchanted_chest"
+  "parent": "minecraft:item/template_chest",
+  "textures": {
+    "particle": "biomeswevegone:block/blue_enchanted/planks"
+  }
 }

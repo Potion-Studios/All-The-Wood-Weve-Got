@@ -2,15 +2,11 @@ package net.potionstudios.woodwevegot.forge;
 
 import com.google.auto.service.AutoService;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.datafix.fixes.References;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -20,7 +16,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.potionstudios.woodwevegot.PlatformHandler;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.forge.item.ForgeBlockItem;
-import net.potionstudios.woodwevegot.forge.item.ForgeChestItem;
 
 import java.nio.file.Path;
 import java.util.Map;
@@ -37,18 +32,8 @@ public final class ForgePlatformHandler implements PlatformHandler {
 	private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, WoodWeveGot.MOD_ID);
 
 	@Override
-	public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String key, Supplier<BlockEntityType.Builder<T>> builder) {
-		return BLOCK_ENTITIES.register(key, () -> builder.get().build(Util.fetchChoiceType(References.BLOCK_ENTITY, key)));
-	}
-
-	@Override
-	public Supplier<Item> createBlockItem(Supplier<? extends Block> block, int burnTime) {
-		return () -> new ForgeBlockItem(block, new BlockItem.Properties(), burnTime);
-	}
-
-	@Override
-	public Supplier<Item> createChestBlockItem(Supplier<? extends Block> block) {
-		return () -> new ForgeChestItem(block, new BlockItem.Properties());
+	public Supplier<Item> createBlockItem(Supplier<? extends Block> block, Item.Properties properties, int burnTime) {
+		return () -> new ForgeBlockItem(block, properties, burnTime);
 	}
 
 	private static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();

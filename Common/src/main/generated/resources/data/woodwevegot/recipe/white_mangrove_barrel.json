@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:white_mangrove_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:white_mangrove_slab"
-    }
+    "P": "biomeswevegone:white_mangrove_planks",
+    "S": "biomeswevegone:white_mangrove_slab"
   },
   "pattern": [
     "PSP",

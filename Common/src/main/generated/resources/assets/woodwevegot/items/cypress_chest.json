@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/cypress_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:cypress/normal"
+    }
+  }
+}

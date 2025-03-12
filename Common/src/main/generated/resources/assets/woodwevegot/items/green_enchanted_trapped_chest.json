@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/green_enchanted_trapped_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:green_enchanted/trapped"
+    }
+  }
+}

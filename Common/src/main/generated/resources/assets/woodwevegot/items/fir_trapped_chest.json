@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "woodwevegot:item/fir_trapped_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "woodwevegot:fir/trapped"
+    }
+  }
+}

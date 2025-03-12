@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:baobab_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:baobab_slab"
-    }
+    "P": "biomeswevegone:baobab_planks",
+    "S": "biomeswevegone:baobab_slab"
   },
   "pattern": [
     "PSP",

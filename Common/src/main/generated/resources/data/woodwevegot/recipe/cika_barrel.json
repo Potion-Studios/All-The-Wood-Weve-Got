@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "biomeswevegone:cika_planks"
-    },
-    "S": {
-      "item": "biomeswevegone:cika_slab"
-    }
+    "P": "biomeswevegone:cika_planks",
+    "S": "biomeswevegone:cika_slab"
   },
   "pattern": [
     "PSP",

@@ -5,8 +5,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.nio.file.Path;
 import java.util.ServiceLoader;
@@ -27,15 +25,6 @@ public interface PlatformHandler {
 	 */
 	Path configPath();
 
-	/**
-	 * Registers a block entity with the specified parameters
-	 * @see BlockEntityType
-	 * @param key The id/name of the block entity
-	 * @param builder The builder for the block entity
-	 * @return Supplier of the BlockEntityType
-	 */
-	<T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String key, Supplier<BlockEntityType.Builder<T>> builder);
-
 	private static <T> T load(Class<T> clazz) {
 		final T loadedService = ServiceLoader.load(clazz)
 				.findFirst()
@@ -44,12 +33,8 @@ public interface PlatformHandler {
 		return loadedService;
 	}
 
-	default Supplier<Item> createBlockItem(Supplier<? extends Block> block, int burnTime) {
-		return () -> new BlockItem(block.get(), new BlockItem.Properties());
-	}
-
-	default Supplier<Item> createChestBlockItem(Supplier<? extends Block> block) {
-		return createBlockItem(block, 300);
+	default Supplier<Item> createBlockItem(Supplier<? extends Block> block, Item.Properties properties, int burnTime) {
+		return () -> new BlockItem(block.get(), properties);
 	}
 
 	<T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value);

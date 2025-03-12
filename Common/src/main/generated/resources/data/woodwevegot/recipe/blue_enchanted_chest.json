@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "biomeswevegone:blue_enchanted_planks"
-    }
+    "#": "biomeswevegone:blue_enchanted_planks"
   },
   "pattern": [
     "###",

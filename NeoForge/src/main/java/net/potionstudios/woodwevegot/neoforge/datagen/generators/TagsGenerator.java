@@ -7,13 +7,11 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.tags.WWGBlockTags;
 import net.potionstudios.woodwevegot.tags.WWGItemTags;
 import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,9 +21,9 @@ import java.util.concurrent.CompletableFuture;
  */
 public class TagsGenerator {
 
-    public static void init(DataGenerator generator, boolean run, PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper helper) {
-        BlockTagGenerator BlockTags = generator.addProvider(run, new BlockTagGenerator(output, lookupProvider, helper));
-        generator.addProvider(run, new ItemTagGenerator(output, lookupProvider, BlockTags, helper));
+    public static void init(DataGenerator generator, boolean run, PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        BlockTagGenerator BlockTags = generator.addProvider(run, new BlockTagGenerator(output, lookupProvider));
+        generator.addProvider(run, new ItemTagGenerator(output, lookupProvider, BlockTags));
     }
 
     /**
@@ -33,8 +31,8 @@ public class TagsGenerator {
      * @see BlockTagsProvider
      */
     private static class BlockTagGenerator extends BlockTagsProvider {
-        private BlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-            super(output, lookupProvider, WoodWeveGot.MOD_ID, existingFileHelper);
+        private BlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(output, lookupProvider, WoodWeveGot.MOD_ID);
         }
 
         @Override
@@ -58,9 +56,8 @@ public class TagsGenerator {
      * @see ItemTagsProvider
      */
     private static class ItemTagGenerator extends ItemTagsProvider {
-
-        private ItemTagGenerator(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, BlockTagGenerator blockTagGenerator, @Nullable ExistingFileHelper existingFileHelper) {
-            super(arg, completableFuture, blockTagGenerator.contentsGetter(), WoodWeveGot.MOD_ID, existingFileHelper);
+        private ItemTagGenerator(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, BlockTagGenerator blockTagGenerator) {
+            super(arg, completableFuture, blockTagGenerator.contentsGetter(), WoodWeveGot.MOD_ID);
         }
 
         @Override
