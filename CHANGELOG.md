@@ -1,3 +1,5 @@
+# 2.2.2
+
 # 2.2.1
 - Fix error in barrel models causing them to not render correctly
 
