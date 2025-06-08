@@ -1,4 +1,6 @@
 # 2.2.2
+- Improved Compatibility with BWG The Village Update (2.4.0+)
+- Refactored WWGBlockEntities to BWGBlockEntityType to match Vanilla
 
 # 2.2.1
 - Fix error in barrel models causing them to not render correctly
