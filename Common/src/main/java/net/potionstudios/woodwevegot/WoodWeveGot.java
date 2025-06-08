@@ -3,7 +3,7 @@ package net.potionstudios.woodwevegot;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.potionstudios.woodwevegot.world.level.block.WWGBlocks;
-import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntityType;
 import org.slf4j.Logger;
 
 public class WoodWeveGot {
@@ -19,7 +19,7 @@ public class WoodWeveGot {
      */
     public static void init() {
         WWGBlocks.blocks();
-        WWGBlockEntities.blockEntities();
+        WWGBlockEntityType.blockEntities();
     }
 
     public static ResourceLocation id(String name) {

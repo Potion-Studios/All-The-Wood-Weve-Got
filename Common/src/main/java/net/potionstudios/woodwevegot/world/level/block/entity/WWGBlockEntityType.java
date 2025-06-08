@@ -10,7 +10,7 @@ import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 
 import java.util.function.Supplier;
 
-public class WWGBlockEntities {
+public class WWGBlockEntityType {
 
     public static final Supplier<BlockEntityType<WWGBarrelBlockEntity>> BARREL = register("barrel", () -> BlockEntityType.Builder.of(WWGBarrelBlockEntity::new,
             WWGWoodSet.getWoodSets().stream().map(WWGWoodSet::barrel).toArray(BarrelBlock[]::new)));

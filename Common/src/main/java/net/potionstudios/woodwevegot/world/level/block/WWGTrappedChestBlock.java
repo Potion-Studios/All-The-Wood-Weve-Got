@@ -9,13 +9,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
 public class WWGTrappedChestBlock extends WWGChestBlock {
 
     protected WWGTrappedChestBlock(String set) {
-        super(() -> WWGBlockEntities.TRAPPED_CHEST.get(), set);
+        super(() -> WWGBlockEntityType.TRAPPED_CHEST.get(), set);
     }
 
     @Override

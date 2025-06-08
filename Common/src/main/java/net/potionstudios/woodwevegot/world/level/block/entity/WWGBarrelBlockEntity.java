@@ -13,7 +13,7 @@ public class WWGBarrelBlockEntity extends BarrelBlockEntity {
 
 	@Override
 	public @NotNull BlockEntityType<?> getType() {
-		return WWGBlockEntities.BARREL.get();
+		return WWGBlockEntityType.BARREL.get();
 	}
 
 	@Override
