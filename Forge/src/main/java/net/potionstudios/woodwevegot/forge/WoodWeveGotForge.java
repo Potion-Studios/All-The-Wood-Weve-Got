@@ -17,8 +17,8 @@ import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
  */
 @Mod(WoodWeveGot.MOD_ID)
 public class WoodWeveGotForge {
-    public WoodWeveGotForge() {
-        IEventBus MOD_BUS = FMLJavaModLoadingContext.get().getModEventBus();
+    public WoodWeveGotForge(final FMLJavaModLoadingContext context) {
+        IEventBus MOD_BUS = context.getModEventBus();
         WoodWeveGot.init();
         ForgePlatformHandler.register(MOD_BUS);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> WoodWeveGotClientForge.init(MOD_BUS));

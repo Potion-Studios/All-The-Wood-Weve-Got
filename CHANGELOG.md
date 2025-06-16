@@ -1,3 +1,8 @@
+# 1.2.2
+- Improved Compatibility with BWG The Village Update (1.6.0+)
+- Refactored WWGBlockEntities to BWGBlockEntityType to match Vanilla
+- Drop Support for NeoForge 1.20.1
+
 # 1.2.1
 - Fix error in barrel models causing them to not render correctly
 
