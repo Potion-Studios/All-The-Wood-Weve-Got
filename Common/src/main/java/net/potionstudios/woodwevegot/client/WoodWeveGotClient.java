@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.potionstudios.woodwevegot.client.renderer.blockentity.WWGChestRenderer;
-import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntityType;
 
 import java.util.function.BiConsumer;
 
@@ -17,10 +17,10 @@ public class WoodWeveGotClient {
     /**
      * Registers the block key renderers.
      * @see BlockEntityRenderers
-     * @see WWGBlockEntities
+     * @see WWGBlockEntityType
      */
     public static void registerBlockEntityRenderers(BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRendererProvider> consumer) {
-        consumer.accept(WWGBlockEntities.CHEST.get(), WWGChestRenderer::new);
-        consumer.accept(WWGBlockEntities.TRAPPED_CHEST.get(), WWGChestRenderer::new);
+        consumer.accept(WWGBlockEntityType.CHEST.get(), WWGChestRenderer::new);
+        consumer.accept(WWGBlockEntityType.TRAPPED_CHEST.get(), WWGChestRenderer::new);
     }
 }

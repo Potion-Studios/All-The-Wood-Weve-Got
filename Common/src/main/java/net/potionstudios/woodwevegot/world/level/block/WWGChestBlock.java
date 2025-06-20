@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntities;
+import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -21,7 +21,7 @@ public class WWGChestBlock extends ChestBlock {
 		this.set = set;
 	}
 	protected WWGChestBlock(BlockBehaviour.Properties properties, String set) {
-		this(() -> WWGBlockEntities.CHEST.get(), properties, set);
+		this(() -> WWGBlockEntityType.CHEST.get(), properties, set);
 	}
 
 	public String getSet() {

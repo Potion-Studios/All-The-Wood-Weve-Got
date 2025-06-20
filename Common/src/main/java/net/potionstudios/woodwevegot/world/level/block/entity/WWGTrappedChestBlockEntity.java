@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class WWGTrappedChestBlockEntity extends WWGChestBlockEntity {
     public WWGTrappedChestBlockEntity(BlockPos pos, BlockState blockState) {
-        super(WWGBlockEntities.TRAPPED_CHEST.get(), pos, blockState);
+        super(WWGBlockEntityType.TRAPPED_CHEST.get(), pos, blockState);
     }
 
     @Override
