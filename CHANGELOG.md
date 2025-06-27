@@ -1,3 +1,5 @@
+# 2.2.3
+
 # 2.2.2
 - Improved Compatibility with BWG The Village Update (2.4.0+)
 - Refactored WWGBlockEntities to BWGBlockEntityType to match Vanilla
