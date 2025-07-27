@@ -40,7 +40,7 @@ dependencies {
 
     modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Fabric:${project.properties["bwg_version"]}") { isTransitive = false }
     modRuntimeOnly("com.github.glitchfiend:TerraBlender-fabric:$minecraftVersion-${project.properties["terrablender_version"]}")
-    modRuntimeOnly("corgitaco.corgilib:Corgilib-Fabric:$minecraftVersion-${project.properties["corgilib_version"]}")
+    modRuntimeOnly("dev.corgitaco:Corgilib-Fabric:$minecraftVersion-${project.properties["corgilib_version"]}")
     modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-fabric:$minecraftVersion-${project.properties["ohthetreesyoullgrow_version"]}")
     modRuntimeOnly("software.bernie.geckolib:geckolib-fabric-$minecraftVersion:${project.properties["geckolib_version"]}")
 
