@@ -22,7 +22,7 @@ public class LangGenerator extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        WWGBlocks.BLOCKS.forEach(block -> add(block.get(), getBlockName(block)));
+        WWGBlocks.BLOCKS.forEach(block -> addBlock(block, getBlockName(block)));
     }
 
     private String getBlockName(Supplier<? extends Block> item) {
