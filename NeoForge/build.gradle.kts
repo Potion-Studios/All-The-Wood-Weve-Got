@@ -50,7 +50,7 @@ dependencies {
     modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-NeoForge:${project.properties["bwg_version"]}") { isTransitive = false }
 
     modRuntimeOnly("com.github.glitchfiend:TerraBlender-neoforge:$minecraftVersion-${project.properties["terrablender_version"]}")
-    modRuntimeOnly("corgitaco.corgilib:Corgilib-NeoForge:$minecraftVersion-${project.properties["corgilib_version"]}")
+    modRuntimeOnly("dev.corgitaco:Corgilib-NeoForge:$minecraftVersion-${project.properties["corgilib_version"]}")
     modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-neoforge:$minecraftVersion-${project.properties["ohthetreesyoullgrow_version"]}")
     modRuntimeOnly("software.bernie.geckolib:geckolib-neoforge-$minecraftVersion:${project.properties["geckolib_version"]}")
 
