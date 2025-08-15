@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -49,7 +49,7 @@ public final class ForgePlatformHandler implements PlatformHandler {
 		return () -> (Holder.Reference<T>) registryObject.getHolder().get();
 	}
 
-	public static void register(final IEventBus bus) {
+	public static void register(final BusGroup bus) {
 		CACHED.values().forEach(deferredRegister -> deferredRegister.register(bus));
 		BLOCK_ENTITIES.register(bus);
 	}

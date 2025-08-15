@@ -5,8 +5,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.special.ChestSpecialRenderer;
@@ -14,7 +12,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.potionstudios.biomeswevegone.BiomesWeveGone;
 import net.potionstudios.woodwevegot.WoodWeveGot;
@@ -40,7 +37,7 @@ public class ModelGenerators extends ModelProvider {
 
     private void createChest(BlockModelGenerators blockModels, ItemModelGenerators itemModels, Block chestBlock, String set, String chestType) {
         ResourceLocation planks = BiomesWeveGone.id("block/" + set + "/planks");
-        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(chestBlock, ModelTemplates.PARTICLE_ONLY.create(chestBlock, new TextureMapping().put(TextureSlot.PARTICLE, planks), blockModels.modelOutput)));
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(chestBlock, BlockModelGenerators.plainVariant(ModelTemplates.PARTICLE_ONLY.create(chestBlock, new TextureMapping().put(TextureSlot.PARTICLE, planks), blockModels.modelOutput))));
         Item item = chestBlock.asItem();
         ResourceLocation resourcelocation = ModelTemplates.CHEST_INVENTORY.create(item, TextureMapping.particle(planks), blockModels.modelOutput);
         ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.specialModel(resourcelocation, new ChestSpecialRenderer.Unbaked(WoodWeveGot.id(set + "/" + chestType)));
@@ -52,8 +49,8 @@ public class ModelGenerators extends ModelProvider {
                 .create(horizontalBlock, new TextureMapping().putForced(TextureSlot.PARTICLE, WoodWeveGot.id("block/" + set + "/ladder")).putForced(TextureSlot.TEXTURE, WoodWeveGot.id("block/" + set + "/ladder")), blockModels.modelOutput);
         blockModels.blockStateOutput
                 .accept(
-                        MultiVariantGenerator.multiVariant(horizontalBlock, Variant.variant().with(VariantProperties.MODEL, model))
-                                .with(BlockModelGenerators.createHorizontalFacingDispatch())
+                        MultiVariantGenerator.dispatch(horizontalBlock, BlockModelGenerators.plainVariant(model))
+                                .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING)
                 );
         blockModels.itemModelOutput.accept(horizontalBlock.asItem(), ItemModelUtils.plainModel(ModelTemplates.FLAT_ITEM.create(horizontalBlock.asItem(), TextureMapping.layer0(WoodWeveGot.id("block/" + set + "/ladder")), blockModels.modelOutput)));
     }
@@ -65,20 +62,17 @@ public class ModelGenerators extends ModelProvider {
         ResourceLocation resourceLocation3 = WoodWeveGot.id("block/" + set + "/barrel_top");
         blockModels.blockStateOutput
                 .accept(
-                        MultiVariantGenerator.multiVariant(barrel)
-                                .with(blockModels.createColumnWithFacing())
+                        MultiVariantGenerator.dispatch(barrel)
                                 .with(
-                                        PropertyDispatch.property(BlockStateProperties.OPEN)
-                                                .select(false, Variant.variant().with(VariantProperties.MODEL, TexturedModel.CUBE_TOP_BOTTOM.updateTexture(textureMapping -> {
+                                        PropertyDispatch.initial(BlockStateProperties.OPEN)
+                                                .select(false, BlockModelGenerators.plainVariant(TexturedModel.CUBE_TOP_BOTTOM.updateTexture(textureMapping -> {
                                                     textureMapping.put(TextureSlot.TOP, resourceLocation3);
                                                     textureMapping.put(TextureSlot.BOTTOM, resourceLocation1);
                                                     textureMapping.put(TextureSlot.SIDE, resourceLocation2);
                                                 }).create(barrel, blockModels.modelOutput)))
                                                 .select(
                                                         true,
-                                                        Variant.variant()
-                                                                .with(
-                                                                        VariantProperties.MODEL,
+                                                        BlockModelGenerators.plainVariant(
                                                                         TexturedModel.CUBE_TOP_BOTTOM
                                                                                 .get(barrel)
                                                                                 .updateTextures(textureMapping -> {
@@ -89,7 +83,7 @@ public class ModelGenerators extends ModelProvider {
                                                                                 .createWithSuffix(barrel, "_open", blockModels.modelOutput)
                                                                 )
                                                 )
-                                )
+                                ).with(BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING)
                 );
     }
 }

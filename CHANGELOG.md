@@ -1,4 +1,5 @@
-# 3.0.2
+# 4.0.0
+- Update to Minecraft 1.21.8
 
 # 3.0.1
 - Improved Compatibility with BWG The Village Update (3.1.0+)

@@ -3,8 +3,6 @@ package net.potionstudios.woodwevegot.client.renderer.blockentity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -23,13 +21,14 @@ import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.phys.Vec3;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.world.level.block.WWGChestBlock;
 import net.potionstudios.woodwevegot.world.level.block.entity.WWGChestBlockEntity;
 import net.potionstudios.woodwevegot.world.level.block.entity.WWGTrappedChestBlockEntity;
 import org.jetbrains.annotations.NotNull;
 
-@Environment(EnvType.CLIENT)
+
 public class WWGChestRenderer extends ChestRenderer<WWGChestBlockEntity> {
 	private final ModelPart lid;
 	private final ModelPart bottom;
@@ -57,44 +56,44 @@ public class WWGChestRenderer extends ChestRenderer<WWGChestBlockEntity> {
 		this.doubleRightLock = modelPart3.getChild("lock");
 	}
 
-	@Override
-	public void render(@NotNull WWGChestBlockEntity blockEntity, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int packedLight, int packedOverlay) {
-		Level level = blockEntity.getLevel();
-		boolean bl = level != null;
-		BlockState blockState = bl ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);
-		ChestType chestType = blockState.hasProperty(ChestBlock.TYPE) ? blockState.getValue(ChestBlock.TYPE) : ChestType.SINGLE;
-		Block block = blockState.getBlock();
-		if (block instanceof ChestBlock moreChestBlock) {
-			boolean bl2 = chestType != ChestType.SINGLE;
-			poseStack.pushPose();
-			float g = blockState.getValue(ChestBlock.FACING).toYRot();
-			poseStack.translate(0.5F, 0.5F, 0.5F);
-			poseStack.mulPose(Axis.YP.rotationDegrees(-g));
-			poseStack.translate(-0.5F, -0.5F, -0.5F);
-			DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> neighborCombineResult;
-			if (bl) {
-				neighborCombineResult = moreChestBlock.combine(blockState, level, blockEntity.getBlockPos(), true);
-			} else {
-				neighborCombineResult = DoubleBlockCombiner.Combiner::acceptNone;
-			}
-			float h = neighborCombineResult.apply(ChestBlock.opennessCombiner(blockEntity)).get(partialTick);
-			h = 1.0f - h;
-			h = 1.0f - h * h * h;
-			int k = neighborCombineResult.apply(new BrightnessCombiner<>()).applyAsInt(packedLight);
-			Material material = getChestMaterial(blockEntity, chestType);
-			VertexConsumer vertexConsumer = material.buffer(buffer, RenderType::entityCutout);
-			if (bl2) {
-				if (chestType == ChestType.LEFT) {
-					this.render(poseStack, vertexConsumer, this.doubleLeftLid, this.doubleLeftLock, this.doubleLeftBottom, h, k, packedOverlay);
-				} else {
-					this.render(poseStack, vertexConsumer, this.doubleRightLid, this.doubleRightLock, this.doubleRightBottom, h, k, packedOverlay);
-				}
-			} else {
-				this.render(poseStack, vertexConsumer, this.lid, this.lock, this.bottom, h, k, packedOverlay);
-			}
-			poseStack.popPose();
-		}
-	}
+    @Override
+    public void render(@NotNull WWGChestBlockEntity blockEntity, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay, @NotNull Vec3 cameraPos) {
+        Level level = blockEntity.getLevel();
+        boolean bl = level != null;
+        BlockState blockState = bl ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);
+        ChestType chestType = blockState.hasProperty(ChestBlock.TYPE) ? blockState.getValue(ChestBlock.TYPE) : ChestType.SINGLE;
+        Block block = blockState.getBlock();
+        if (block instanceof ChestBlock moreChestBlock) {
+            boolean bl2 = chestType != ChestType.SINGLE;
+            poseStack.pushPose();
+            float g = blockState.getValue(ChestBlock.FACING).toYRot();
+            poseStack.translate(0.5F, 0.5F, 0.5F);
+            poseStack.mulPose(Axis.YP.rotationDegrees(-g));
+            poseStack.translate(-0.5F, -0.5F, -0.5F);
+            DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> neighborCombineResult;
+            if (bl) {
+                neighborCombineResult = moreChestBlock.combine(blockState, level, blockEntity.getBlockPos(), true);
+            } else {
+                neighborCombineResult = DoubleBlockCombiner.Combiner::acceptNone;
+            }
+            float h = neighborCombineResult.apply(ChestBlock.opennessCombiner(blockEntity)).get(partialTick);
+            h = 1.0f - h;
+            h = 1.0f - h * h * h;
+            int k = neighborCombineResult.apply(new BrightnessCombiner<>()).applyAsInt(packedLight);
+            Material material = getChestMaterial(blockEntity, chestType);
+            VertexConsumer vertexConsumer = material.buffer(bufferSource, RenderType::entityCutout);
+            if (bl2) {
+                if (chestType == ChestType.LEFT) {
+                    this.render(poseStack, vertexConsumer, this.doubleLeftLid, this.doubleLeftLock, this.doubleLeftBottom, h, k, packedOverlay);
+                } else {
+                    this.render(poseStack, vertexConsumer, this.doubleRightLid, this.doubleRightLock, this.doubleRightBottom, h, k, packedOverlay);
+                }
+            } else {
+                this.render(poseStack, vertexConsumer, this.lid, this.lock, this.bottom, h, k, packedOverlay);
+            }
+            poseStack.popPose();
+        }
+    }
 
 	private void render(PoseStack poseStack, VertexConsumer consumer, ModelPart lidPart, ModelPart lockPart, ModelPart bottomPart, float lidAngle, int packedLight, int packedOverlay) {
 		lidPart.xRot = -(lidAngle * (float) (Math.PI / 2));

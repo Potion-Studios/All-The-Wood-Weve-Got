@@ -26,8 +26,8 @@
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.21.4",
-    "biomeswevegone": ">=3.0.0"
+    "minecraft": ">=1.21.8",
+    "biomeswevegone": ">=4.0.0"
   },
   "custom": {
     "modmenu": {

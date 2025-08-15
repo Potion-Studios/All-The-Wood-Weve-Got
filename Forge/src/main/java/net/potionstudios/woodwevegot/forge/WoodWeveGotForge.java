@@ -1,11 +1,10 @@
 package net.potionstudios.woodwevegot.forge;
 
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.potionstudios.biomeswevegone.world.item.BWGCreativeTabs;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.minecraftforge.fml.common.Mod;
@@ -18,11 +17,11 @@ import net.potionstudios.woodwevegot.world.level.block.WWGWoodSet;
 @Mod(WoodWeveGot.MOD_ID)
 public class WoodWeveGotForge {
     public WoodWeveGotForge(final FMLJavaModLoadingContext context) {
-        IEventBus MOD_BUS = context.getModEventBus();
+        BusGroup busGroup = context.getModBusGroup();
         WoodWeveGot.init();
-        ForgePlatformHandler.register(MOD_BUS);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> WoodWeveGotClientForge.init(MOD_BUS));
-        MOD_BUS.addListener(WoodWeveGotForge::addToCreativeTab);
+        ForgePlatformHandler.register(busGroup);
+        if (FMLEnvironment.dist.isClient()) WoodWeveGotClientForge.init(busGroup);
+        BuildCreativeModeTabContentsEvent.getBus(busGroup).addListener(WoodWeveGotForge::addToCreativeTab);
     }
 
     private static void addToCreativeTab(final BuildCreativeModeTabContentsEvent event) {

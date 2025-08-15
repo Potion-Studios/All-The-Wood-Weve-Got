@@ -17,20 +17,20 @@ logoFile = "WWG.png"
 [[dependencies.woodwevegot]]
 modId = "forge"
 mandatory = true
-versionRange = "[52.0.21,)"
+versionRange = "[58.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.woodwevegot]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.21.4]"
+versionRange = "[1.21.8]"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.woodwevegot]]
 modId = "biomeswevegone"
 mandatory = true
-versionRange = "[3.0.0,)"
+versionRange = "[4.0.0,)"
 ordering = "AFTER"
 side = "BOTH"

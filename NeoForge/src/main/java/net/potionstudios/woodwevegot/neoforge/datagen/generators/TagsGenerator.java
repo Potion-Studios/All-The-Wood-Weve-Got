@@ -3,9 +3,9 @@ package net.potionstudios.woodwevegot.neoforge.datagen.generators;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.potionstudios.woodwevegot.WoodWeveGot;
 import net.potionstudios.woodwevegot.tags.WWGBlockTags;
@@ -53,9 +53,9 @@ public class TagsGenerator {
 
     /**
      * Used to generate tags for items.
-     * @see ItemTagsProvider
+     * @see BlockTagCopyingItemTagProvider
      */
-    private static class ItemTagGenerator extends ItemTagsProvider {
+    private static class ItemTagGenerator extends BlockTagCopyingItemTagProvider {
         private ItemTagGenerator(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, BlockTagGenerator blockTagGenerator) {
             super(arg, completableFuture, blockTagGenerator.contentsGetter(), WoodWeveGot.MOD_ID);
         }
