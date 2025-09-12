@@ -1,5 +1,6 @@
 # 2.2.3
 - Remove NeoForge Data from Fabric and Forge Jars
+- Add Trapped Chests to #c:chests/wooden tag
 
 # 2.2.2
 - Improved Compatibility with BWG The Village Update (2.4.0+)
