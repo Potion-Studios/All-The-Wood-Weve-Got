@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#woodwevegot:chests"
+    "#woodwevegot:chests",
+    "#woodwevegot:trapped_chests"
   ]
 }

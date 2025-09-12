@@ -1,4 +1,5 @@
 # 1.2.3
+- Add Trapped chests to #forge:chests/wooden and #c:chests tags
 
 # 1.2.2
 - Improved Compatibility with BWG The Village Update (1.6.0+)
