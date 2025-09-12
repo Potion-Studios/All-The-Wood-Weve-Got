@@ -1,4 +1,5 @@
 # 4.0.1
+- Remove NeoForge Data from Fabric and Forge Jars
 
 # 4.0.0
 - Update to Minecraft 1.21.8

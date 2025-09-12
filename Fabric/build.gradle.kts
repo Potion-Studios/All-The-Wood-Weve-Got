@@ -59,7 +59,7 @@ tasks {
     }
 
     shadowJar {
-        exclude("architectury.common.json", ".cache/**", "data/woodwevegot/neoforge/**")
+        exclude("architectury.common.json", ".cache/**", "data/neoforge/**")
         configurations = listOf(project.configurations.getByName("shadowBundle"))
         archiveClassifier.set("dev-shadow")
     }
@@ -73,6 +73,6 @@ tasks {
 
 publisher {
     setLoaders(ModLoader.FABRIC, ModLoader.QUILT)
-    curseDepends.required.set(mutableListOf("fabric-api"))
-    modrinthDepends.required.set(mutableListOf("fabric-api"))
+    curseDepends.required.set(mutableListOf(curseDepends.required.get()[0], "fabric-api"))
+    modrinthDepends.required.set(mutableListOf(modrinthDepends.required.get()[0], "fabric-api"))
 }
