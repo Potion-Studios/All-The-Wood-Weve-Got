@@ -1,3 +1,6 @@
+# 4.2.0
+- Update to Minecraft 1.21.10
+
 # 4.0.1
 - Remove NeoForge Data from Fabric and Forge Jars
 - Add Trapped Chests to #c:chests/wooden tag

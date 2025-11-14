@@ -20,8 +20,8 @@ public class WoodWeveGotForge {
         BusGroup busGroup = context.getModBusGroup();
         WoodWeveGot.init();
         ForgePlatformHandler.register(busGroup);
-        if (FMLEnvironment.dist.isClient()) WoodWeveGotClientForge.init(busGroup);
-        BuildCreativeModeTabContentsEvent.getBus(busGroup).addListener(WoodWeveGotForge::addToCreativeTab);
+        if (FMLEnvironment.dist.isClient()) WoodWeveGotClientForge.init();
+        BuildCreativeModeTabContentsEvent.BUS.addListener(WoodWeveGotForge::addToCreativeTab);
     }
 
     private static void addToCreativeTab(final BuildCreativeModeTabContentsEvent event) {

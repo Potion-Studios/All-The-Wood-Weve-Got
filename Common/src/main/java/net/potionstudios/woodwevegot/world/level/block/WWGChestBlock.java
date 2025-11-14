@@ -1,6 +1,8 @@
 package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -16,12 +18,12 @@ public class WWGChestBlock extends ChestBlock {
 
 	private final String set;
 
-	protected WWGChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, BlockBehaviour.Properties properties, String set) {
-		super(blockEntityType, properties);
+	protected WWGChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, SoundEvent openSound, SoundEvent closeSound, BlockBehaviour.Properties properties, String set) {
+		super(blockEntityType, openSound, closeSound, properties);
 		this.set = set;
 	}
 	protected WWGChestBlock(BlockBehaviour.Properties properties, String set) {
-		this(() -> WWGBlockEntityType.CHEST.get(), properties, set);
+		this(() -> WWGBlockEntityType.CHEST.get(), SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, properties, set);
 	}
 
 	public String getSet() {

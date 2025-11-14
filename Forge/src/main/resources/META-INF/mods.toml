@@ -24,13 +24,13 @@ side = "BOTH"
 [[dependencies.woodwevegot]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.21.8]"
+versionRange = "[1.21.10,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.woodwevegot]]
 modId = "biomeswevegone"
 mandatory = true
-versionRange = "[4.0.0,)"
+versionRange = "[4.2.0,)"
 ordering = "AFTER"
 side = "BOTH"
