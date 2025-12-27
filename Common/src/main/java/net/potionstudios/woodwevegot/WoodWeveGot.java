@@ -1,7 +1,7 @@
 package net.potionstudios.woodwevegot;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.potionstudios.woodwevegot.world.level.block.WWGBlocks;
 import net.potionstudios.woodwevegot.world.level.block.entity.WWGBlockEntityType;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class WoodWeveGot {
         WWGBlockEntityType.blockEntities();
     }
 
-    public static ResourceLocation id(String name) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    public static Identifier id(String name) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, name);
     }
 }

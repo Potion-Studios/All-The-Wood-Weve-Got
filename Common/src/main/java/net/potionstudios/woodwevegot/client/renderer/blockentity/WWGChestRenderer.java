@@ -2,14 +2,15 @@ package net.potionstudios.woodwevegot.client.renderer.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.ChestModel;
+import net.minecraft.client.model.object.chest.ChestModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.blockentity.state.ChestRenderState;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -47,7 +48,7 @@ public class WWGChestRenderer extends ChestRenderer<WWGChestBlockEntity> {
 		f = 1.0F - f;
 		f = 1.0F - f * f * f;
 		Material material = getChestMaterial(chestRenderState);
-		RenderType renderType = material.renderType(RenderType::entityCutout);
+		RenderType renderType = material.renderType(RenderTypes::entityCutout);
 		TextureAtlasSprite textureAtlasSprite = this.materials.get(material);
 		if (chestRenderState.type != ChestType.SINGLE) {
 			if (chestRenderState.type == ChestType.LEFT) {

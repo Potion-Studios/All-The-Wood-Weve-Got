@@ -1,3 +1,6 @@
+# 4.3.0
+- Update to Minecraft 1.21.11
+
 # 4.2.0
 - Update to Minecraft 1.21.10
 

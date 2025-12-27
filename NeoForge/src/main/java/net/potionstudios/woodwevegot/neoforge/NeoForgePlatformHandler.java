@@ -32,12 +32,12 @@ public final class NeoForgePlatformHandler implements PlatformHandler {
 
 	@Override
 	public <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
-		return CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), WoodWeveGot.MOD_ID)).register(name, value);
+		return CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key(), WoodWeveGot.MOD_ID)).register(name, value);
 	}
 
 	@Override
 	public <T> Supplier<Holder.Reference<T>> registerForHolder(Registry<T> registry, String name, Supplier<T> value) {
-		DeferredHolder<?, ?> registryObject = CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), WoodWeveGot.MOD_ID)).register(name, value);
+		DeferredHolder<?, ?> registryObject = CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key(), WoodWeveGot.MOD_ID)).register(name, value);
 		return () -> (Holder.Reference<T>) registryObject.getDelegate();
 	}
 

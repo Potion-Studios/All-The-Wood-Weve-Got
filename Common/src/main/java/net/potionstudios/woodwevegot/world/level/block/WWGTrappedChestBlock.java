@@ -2,7 +2,7 @@ package net.potionstudios.woodwevegot.world.level.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
@@ -21,7 +21,7 @@ public class WWGTrappedChestBlock extends WWGChestBlock {
     }
 
     @Override
-    protected @NotNull Stat<ResourceLocation> getOpenChestStat() {
+    protected @NotNull Stat<Identifier> getOpenChestStat() {
         return Stats.CUSTOM.get(Stats.TRIGGER_TRAPPED_CHEST);
     }
 
