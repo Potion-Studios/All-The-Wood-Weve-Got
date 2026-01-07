@@ -1,3 +1,6 @@
+# 2.2.4
+- Add Polish Translations (pl_pl) (Credits: Kierohere)
+
 # 2.2.3
 - Remove NeoForge Data from Fabric and Forge Jars
 - Add Trapped Chests to #c:chests/wooden tag
