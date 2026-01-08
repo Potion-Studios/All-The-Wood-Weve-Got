@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
  * @see GatherDataEvent
  * @author Joseph T. McQuigg
  */
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = WoodWeveGot.MOD_ID)
+@EventBusSubscriber(modid = WoodWeveGot.MOD_ID)
 class DataGeneratorsRegister {
 
 	@SubscribeEvent
