@@ -1,4 +1,5 @@
 # 3.0.3
+- Add Polish Translations (pl_pl) (#15)
 
 # 3.0.2
 - Remove NeoForge Data from Fabric and Forge Jars
