@@ -1,3 +1,5 @@
+# 3.0.3
+
 # 3.0.2
 - Remove NeoForge Data from Fabric and Forge Jars
 - Add Trapped Chests to #c:chests/wooden tag
