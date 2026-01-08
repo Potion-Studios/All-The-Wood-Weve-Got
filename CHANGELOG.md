@@ -1,3 +1,6 @@
+# 4.3.1
+- Add Polish Translations (pl_pl) (#15)
+
 # 4.3.0
 - Update to Minecraft 1.21.11
 
