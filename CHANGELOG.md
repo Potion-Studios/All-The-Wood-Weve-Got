@@ -1,4 +1,5 @@
 # 1.2.4
+- Add Polish Translations (pl_pl) (Credits: Kierohere)
 
 # 1.2.3
 - Add Trapped chests to #forge:chests/wooden and #c:chests tags
