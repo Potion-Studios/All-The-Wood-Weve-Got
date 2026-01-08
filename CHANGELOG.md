@@ -1,3 +1,5 @@
+# 1.2.4
+
 # 1.2.3
 - Add Trapped chests to #forge:chests/wooden and #c:chests tags
 
