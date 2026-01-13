@@ -56,4 +56,5 @@ public interface PlatformHandler {
 
 	<T> Supplier<Holder.Reference<T>> registerForHolder(Registry<T> registry, String name, Supplier<T> value);
 
+	boolean isModLoaded(String modID);
 }

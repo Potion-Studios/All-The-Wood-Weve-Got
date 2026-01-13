@@ -30,7 +30,14 @@ side = "BOTH"
 
 [[dependencies.woodwevegot]]
 modId = "biomeswevegone"
-type = "required"
+type = "optional"
 versionRange = "[2.2.3,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.woodwevegot]]
+modId = "netherdescent"
+type = "optional"
+versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"

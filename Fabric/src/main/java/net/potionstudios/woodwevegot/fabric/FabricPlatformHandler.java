@@ -42,4 +42,9 @@ public final class FabricPlatformHandler implements PlatformHandler {
 		Holder.Reference<T> reference = Registry.registerForHolder(registry, WoodWeveGot.id(name), value.get());
 		return () -> reference;
 	}
+
+	@Override
+	public boolean isModLoaded(String modID) {
+		return FabricLoader.getInstance().isModLoaded(modID);
+	}
 }

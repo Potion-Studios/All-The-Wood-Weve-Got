@@ -29,5 +29,4 @@ public class WoodWeveGotFabric implements ModInitializer {
         FuelRegistry.INSTANCE.add(WWGItemTags.CHESTS, 300);
         FuelRegistry.INSTANCE.add(WWGItemTags.TRAPPED_CHESTS, 300);
     }
-
 }

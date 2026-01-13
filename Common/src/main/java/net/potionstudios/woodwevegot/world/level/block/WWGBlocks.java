@@ -3,6 +3,7 @@ package net.potionstudios.woodwevegot.world.level.block;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.potionstudios.biomeswevegone.BiomesWeveGone;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWood;
 import net.potionstudios.biomeswevegone.world.level.block.wood.BWGWoodSet;
 import net.potionstudios.woodwevegot.PlatformHandler;
@@ -14,7 +15,6 @@ import java.util.function.Supplier;
 public class WWGBlocks {
 
     public static final ArrayList<Supplier<? extends Block>> BLOCKS = new ArrayList<>();
-
 
     protected static <B extends Block> Supplier<B> registerChestBlockItem(String key, Supplier<B> blockSupplier) {
         Supplier<B> block = registerBlock(key, blockSupplier);
@@ -44,7 +44,9 @@ public class WWGBlocks {
 
     public static void blocks() {
         WoodWeveGot.LOGGER.info("Registering All The Wood We've Got Blocks");
-        BWGWood.wood();
-        BWGWoodSet.woodsets().forEach(bwgWoodSet -> new WWGWoodSet(() -> bwgWoodSet));
+        if (PlatformHandler.PLATFORM_HANDLER.isModLoaded(BiomesWeveGone.MOD_ID)) {
+            BWGWood.wood();
+            BWGWoodSet.woodsets().forEach(bwgWoodSet -> new WWGWoodSet(() -> bwgWoodSet));
+        }
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -47,6 +48,11 @@ public final class NeoForgePlatformHandler implements PlatformHandler {
 	public <T> Supplier<Holder.Reference<T>> registerForHolder(Registry<T> registry, String name, Supplier<T> value) {
 		DeferredHolder<?, ?> registryObject = CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), WoodWeveGot.MOD_ID)).register(name, value);
 		return () -> (Holder.Reference<T>) registryObject.getDelegate();
+	}
+
+	@Override
+	public boolean isModLoaded(String modID) {
+		return ModList.get().isLoaded(modID);
 	}
 
 	public static void register(final IEventBus bus) {
