@@ -40,14 +40,17 @@ public class WoodWeveGotNeoForge {
 
     private static void registerCapabilities(final RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, WWGBlockEntityType.CHEST.get(),
-                ((be, direction) -> new InvWrapper(
-                        Objects.requireNonNull(ChestBlock.getContainer((ChestBlock) be.getBlockState().getBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
+                ((blockEntity, direction) -> new InvWrapper(
+                        Objects.requireNonNull(ChestBlock.getContainer((ChestBlock) blockEntity.getBlockState().getBlock(), blockEntity.getBlockState(), Objects.requireNonNull(blockEntity.getLevel()), blockEntity.getBlockPos(), true)))
                 )
         );
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, WWGBlockEntityType.TRAPPED_CHEST.get(),
-                ((be, direction) -> new InvWrapper(
-                        Objects.requireNonNull(ChestBlock.getContainer((TrappedChestBlock) be.getBlockState().getBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
+                ((blockEntity, direction) -> new InvWrapper(
+                        Objects.requireNonNull(ChestBlock.getContainer((TrappedChestBlock) blockEntity.getBlockState().getBlock(), blockEntity.getBlockState(), Objects.requireNonNull(blockEntity.getLevel()), blockEntity.getBlockPos(), true)))
                 )
         );
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, WWGBlockEntityType.BARREL.get(),
+                ((blockEntity, direction) -> new InvWrapper(blockEntity)
+        ));
     }
 }

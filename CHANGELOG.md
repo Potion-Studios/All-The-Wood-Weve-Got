@@ -1,4 +1,5 @@
 # 2.3.0
+- Register Chests, Trapped Chests, and Barrels with new InvWrapper for Capabilities.ItemHandler.BLOCK
 
 # 2.2.4
 - Add Polish Translations (pl_pl) (Credits: Kierohere)
