@@ -9,22 +9,14 @@ architectury {
     neoForge()
 }
 
-val minecraftVersion = project.properties["minecraft_version"] as String
+val minecraftVersion = providers.gradleProperty("minecraft_version").get()
 
 configurations {
-    create("common")
-    "common" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
-    create("shadowBundle")
-    compileClasspath.get().extendsFrom(configurations["common"])
-    runtimeClasspath.get().extendsFrom(configurations["common"])
-    getByName("developmentNeoForge").extendsFrom(configurations["common"])
-    "shadowBundle" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
+    val common = register("common")
+    register("shadowCommon")
+    compileClasspath.get().extendsFrom(common.get())
+    runtimeClasspath.get().extendsFrom(common.get())
+    named("developmentNeoForge") { extendsFrom(common.get()) }
 }
 
 loom {
@@ -32,31 +24,33 @@ loom {
 
     runs.create("datagen") {
         data()
-        programArgs("--all", "--mod", "woodwevegot")
-        programArgs("--output", project(":Common").file("src/main/generated/resources").absolutePath)
-        programArgs("--existing", project(":Common").file("src/main/resources").absolutePath)
-        programArgs("--existing-mod", "biomeswevegone")
+        programArguments.addAll(
+            "--all", "--mod", "woodwevegot",
+            "--output", project(":Common").file("src/main/generated/resources").absolutePath,
+            "--existing", project(":Common").file("src/main/resources").absolutePath,
+            "--existing-mod", "biomeswevegone"
+        )
     }
 }
 
 dependencies {
-    neoForge("net.neoforged:neoforge:${project.properties["neoforge_version"]}")
+    neoForge("net.neoforged:neoforge:${providers.gradleProperty("neoforge_version").get()}")
 
     "common"(project(":Common", "namedElements")) { isTransitive = false }
-    "shadowBundle"(project(":Common", "transformProductionNeoForge"))
+    "shadowCommon"(project(":Common", "transformProductionNeoForge"))
 
-    modLocalRuntime("me.djtheredstoner:DevAuth-neoforge:${project.properties["devauth_version"]}")
+    modLocalRuntime("me.djtheredstoner:DevAuth-neoforge:${providers.gradleProperty("devauth_version").get()}")
 
-    modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-NeoForge:${project.properties["bwg_version"]}") { isTransitive = false }
+    modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-NeoForge:${providers.gradleProperty("bwg_version").get()}") { isTransitive = false }
 
-    modRuntimeOnly("com.github.glitchfiend:TerraBlender-neoforge:$minecraftVersion-${project.properties["terrablender_version"]}")
-    modRuntimeOnly("dev.corgitaco:Corgilib-NeoForge:$minecraftVersion-${project.properties["corgilib_version"]}")
-    modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-neoforge:$minecraftVersion-${project.properties["ohthetreesyoullgrow_version"]}")
-    modRuntimeOnly("software.bernie.geckolib:geckolib-neoforge-$minecraftVersion:${project.properties["geckolib_version"]}")
+    modRuntimeOnly("com.github.glitchfiend:TerraBlender-neoforge:$minecraftVersion-${providers.gradleProperty("terrablender_version").get()}")
+    modRuntimeOnly("dev.corgitaco:Corgilib-NeoForge:$minecraftVersion-${providers.gradleProperty("corgilib_version").get()}")
+    modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-neoforge:$minecraftVersion-${providers.gradleProperty("ohthetreesyoullgrow_version").get()}")
+    modRuntimeOnly("software.bernie.geckolib:geckolib-neoforge-$minecraftVersion:${providers.gradleProperty("geckolib_version").get()}")
 
-    modCompileOnly("mcp.mobius.waila:wthit-api:neo-${project.properties["WTHIT"]}")
-    modLocalRuntime("mcp.mobius.waila:wthit:neo-${project.properties["WTHIT"]}")
-    modLocalRuntime("lol.bai:badpackets:neo-${project.properties["badPackets"]}")
+    modCompileOnly("mcp.mobius.waila:wthit-api:neo-${providers.gradleProperty("WTHIT").get()}")
+    modLocalRuntime("mcp.mobius.waila:wthit:neo-${providers.gradleProperty("WTHIT").get()}")
+    modLocalRuntime("lol.bai:badpackets:neo-${providers.gradleProperty("badPackets").get()}")
 
     modLocalRuntime("com.github.Jab125.architectury-data-generation-fix:architectury-data-generation-fix-neoforge:21.0.3")
 }
@@ -72,7 +66,7 @@ tasks {
 
     shadowJar {
         exclude("net/potionstudios/woodwevegot/neoforge/datagen/**", "architectury.common.json", ".cache/**")
-        configurations = listOf(project.configurations.getByName("shadowBundle"))
+        configurations = listOf(project.configurations.getByName("shadowCommon"))
         archiveClassifier.set("dev-shadow")
     }
 

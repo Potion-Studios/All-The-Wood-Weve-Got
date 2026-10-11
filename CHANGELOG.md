@@ -1,3 +1,5 @@
+# 2.3.0
+
 # 2.2.4
 - Add Polish Translations (pl_pl) (Credits: Kierohere)
 

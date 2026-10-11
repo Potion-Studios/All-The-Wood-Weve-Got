@@ -3,8 +3,7 @@ name: Gradle Publish to Maven
 on:
   push:
     branches:
-      - 1.21.8
-      - 1.21.4
+      - 1.21.11
       - 1.21.1
       - 1.20.1
 
@@ -13,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Set up JDK 21
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
-          distribution: adopt
+          distribution: oracle
           java-version: 21
           cache: gradle
 

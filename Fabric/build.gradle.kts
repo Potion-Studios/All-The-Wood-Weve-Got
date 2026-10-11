@@ -9,44 +9,36 @@ architectury {
     fabric()
 }
 
-val minecraftVersion = project.properties["minecraft_version"] as String
+val minecraftVersion = providers.gradleProperty("minecraft_version").get()
 
 configurations {
-    create("common")
-    "common" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
-    create("shadowBundle")
-    compileClasspath.get().extendsFrom(configurations["common"])
-    runtimeClasspath.get().extendsFrom(configurations["common"])
-    getByName("developmentFabric").extendsFrom(configurations["common"])
-    "shadowBundle" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
+    val common = register("common")
+    register("shadowCommon")
+    compileClasspath.get().extendsFrom(common.get())
+    runtimeClasspath.get().extendsFrom(common.get())
+    named("developmentFabric") { extendsFrom(common.get()) }
 }
 
 loom.accessWidenerPath.set(project(":Common").loom.accessWidenerPath)
 
 dependencies {
-    modImplementation("net.fabricmc:fabric-loader:${project.properties["fabric_loader_version"]}")
-    modApi("net.fabricmc.fabric-api:fabric-api:${project.properties["fabric_api_version"]}+$minecraftVersion")
+    modImplementation("net.fabricmc:fabric-loader:${providers.gradleProperty("fabric_loader_version").get()}")
+    modApi("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}+$minecraftVersion")
 
     "common"(project(":Common", "namedElements")) { isTransitive = false }
-    "shadowBundle"(project(":Common", "transformProductionFabric"))
+    "shadowCommon"(project(":Common", "transformProductionFabric"))
 
-    modLocalRuntime("me.djtheredstoner:DevAuth-fabric:${project.properties["devauth_version"]}")
+    modLocalRuntime("me.djtheredstoner:DevAuth-fabric:${providers.gradleProperty("devauth_version").get()}")
 
-    modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Fabric:${project.properties["bwg_version"]}") { isTransitive = false }
-    modRuntimeOnly("com.github.glitchfiend:TerraBlender-fabric:$minecraftVersion-${project.properties["terrablender_version"]}")
-    modRuntimeOnly("dev.corgitaco:Corgilib-Fabric:$minecraftVersion-${project.properties["corgilib_version"]}")
-    modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-fabric:$minecraftVersion-${project.properties["ohthetreesyoullgrow_version"]}")
-    modRuntimeOnly("software.bernie.geckolib:geckolib-fabric-$minecraftVersion:${project.properties["geckolib_version"]}")
+    modApi("net.potionstudios:Oh-The-Biomes-Weve-Gone-Fabric:${providers.gradleProperty("bwg_version").get()}") { isTransitive = false }
+    modRuntimeOnly("com.github.glitchfiend:TerraBlender-fabric:$minecraftVersion-${providers.gradleProperty("terrablender_version").get()}")
+    modRuntimeOnly("dev.corgitaco:Corgilib-Fabric:$minecraftVersion-${providers.gradleProperty("corgilib_version").get()}")
+    modRuntimeOnly("dev.corgitaco:Oh-The-Trees-Youll-Grow-fabric:$minecraftVersion-${providers.gradleProperty("ohthetreesyoullgrow_version").get()}")
+    modRuntimeOnly("software.bernie.geckolib:geckolib-fabric-$minecraftVersion:${providers.gradleProperty("geckolib_version").get()}")
 
-    modCompileOnly("mcp.mobius.waila:wthit-api:fabric-${project.properties["WTHIT"]}")
-    modLocalRuntime("mcp.mobius.waila:wthit:fabric-${project.properties["WTHIT"]}")
-    modLocalRuntime("lol.bai:badpackets:fabric-${project.properties["badPackets"]}")
+    modCompileOnly("mcp.mobius.waila:wthit-api:fabric-${providers.gradleProperty("WTHIT").get()}")
+    modLocalRuntime("mcp.mobius.waila:wthit:fabric-${providers.gradleProperty("WTHIT").get()}")
+    modLocalRuntime("lol.bai:badpackets:fabric-${providers.gradleProperty("badPackets").get()}")
 }
 
 tasks {
@@ -60,7 +52,7 @@ tasks {
 
     shadowJar {
         exclude("architectury.common.json", ".cache/**", "data/neoforge/**")
-        configurations = listOf(project.configurations.getByName("shadowBundle"))
+        configurations = listOf(project.configurations.getByName("shadowCommon"))
         archiveClassifier.set("dev-shadow")
     }
 
